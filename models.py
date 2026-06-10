@@ -6,7 +6,7 @@ from sqlalchemy import ForeignKey
 
 from sqlalchemy.orm import relationship
 
-from app.config.db import Base
+from config.db import Base
 
 
 class Medicine(Base):

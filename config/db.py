@@ -3,7 +3,7 @@ from sqlalchemy.orm import sessionmaker
 from sqlalchemy.orm import declarative_base
 from urllib.parse import quote_plus
 
-from app.config.config import settings
+from config.config import settings
 
 password = quote_plus(settings.DB_PASSWORD)
 

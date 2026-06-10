@@ -1,7 +1,7 @@
 from fastapi import APIRouter, Depends
 from sqlalchemy.orm import Session
 
-from app.config.db import get_db
+from config.db import get_db
 
 from app.subproject.service import (
     add_medicine_service,
@@ -11,7 +11,7 @@ from app.subproject.service import (
     get_stocks_service
 )
 
-from app.subproject.schema.medicine_schema import (
+from app.subproject.medicine_schema import (
     MedicineCreate,
     MedicineResponse,
     WarehouseStockCreate,

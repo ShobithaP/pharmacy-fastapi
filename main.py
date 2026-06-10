@@ -2,7 +2,7 @@ from fastapi import FastAPI
 
 from app.subproject.api import router
 
-from app.config.db import engine
+from config.db import engine
 
 from models import Base
 

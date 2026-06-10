@@ -68,13 +68,3 @@ def get_medicine_by_id(
         Medicine.id == medicine_id
     ).first()
 
-def get_medicine_by_id(
-    db,
-    medicine_id
-):
-
-    return db.query(
-        Medicine
-    ).filter(
-        Medicine.id == medicine_id
-    ).first()
