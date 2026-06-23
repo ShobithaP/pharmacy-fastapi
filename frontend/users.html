@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Users Management</title>
+
+    <link rel="stylesheet" href="css/dashboard.css">
+
+</head>
+
+<body>
+
+<main class="content">
+
+    <header class="page-header">
+
+        <div>
+
+            <h1>Users Management</h1>
+
+            <p>
+                Manage system users and staff accounts.
+            </p>
+
+        </div>
+
+        <div style="display:flex; gap:10px;">
+
+            <button
+                onclick="location.href='dashboard.html'"
+                class="secondary-btnss="primary-btn">
+
+                + Add User
+
+            </button>
+
+        </div>
+
+    </header>
+
+    <section class="toolbar">
+
+        <input
+            type="text"
+            id="searchUser"
+            placeholder="Search users...">
+
+    </section>
+
+    <section class="table-card">
+
+        <table>
+
+            <thead>
+
+                <tr>
+
+                    <th>ID</th>
+                    <th>Username</th>
+                    <th>Email</th>
+                    <th>Role</th>
+                    <th>Actions</th>
+
+                </tr>
+
+            </thead>
+
+            <tbody id="userTable">
+
+                <tr>
+
+                    <td colspan="5">
+
+                        Loading users...
+
+                    </td>
+
+                </tr>
+
+            </tbody>
+
+        </table>
+
+    </section>
+
+</main>
+
+<div
+    id="userModal"
+    class="modal">
+
+    <div class="modal-content">
+
+        <h2 id="modalTitle">
+
+            Add User
+
+        </h2>
+
+        <form id="userForm">
+
+            <div class="form-group">
+
+                <label>Username</label>
+
+                <input
+                    type="text"
+                    id="username"
+                    required>
+
+            </div>
+
+            <div class="form-group">
+
+                <label>Email</label>
+
+                <input
+                    type="email"
+                    id="email"
+                    required>
+
+            </div>
+
+            <div class="form-group">
+
+                <label>Password</label>
+
+                <input
+                    type="password"
+                    id="password"
+                    required>
+
+            </div>
+
+            <div class="form-group">
+
+                <label>Role</label>
+
+                <select
+                    id="role"
+                    required>
+
+                    <option value="">
+                        Select Role
+                    </option>
+
+                    <option value="ADMIN">
+                        Admin
+                    </option>
+
+                    <option value="PHARMACIST">
+                        Pharmacist
+                    </option>
+
+                    <option value="WAREHOUSE_MANAGER">
+                        Warehouse Manager
+                    </option>
+
+                    <option value="CUSTOMER">
+                        Customer
+                    </option>
+
+                </select>
+
+            </div>
+
+            <div class="modal-buttons">
+
+                <button
+                    type="submit"
+                    class="primary-btn">
+
+                    Save
+
+                </button>
+
+                <button
+                    type="button"
+                    id="cancelBtn"
+                    class="secondary-btn">
+
+                    Cancel
+
+                </button>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+
+<script type="module" src="js/users.js"></script>
+<link rel="stylesheet" href="css/users.css">
+</body>
+
+</html>

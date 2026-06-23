@@ -9,41 +9,112 @@ from sqlalchemy.orm import relationship
 from config.db import Base
 
 
-class Medicine(Base):
-    __tablename__ = "medicines"
+# =====================================================
+# USER
+# =====================================================
+
+class User(Base):
+    __tablename__ = "users"
 
     id = Column(Integer, primary_key=True, index=True)
 
-    name = Column(String(100))
+    username = Column(String(100), nullable=False)
 
-    manufacturer = Column(String(100))
+    email = Column(String(100), unique=True, nullable=False)
 
-    price = Column(Float)
+    password = Column(String(255), nullable=False)
 
-    warehouse_stocks = relationship(
-        "WarehouseStock",
-        back_populates="medicine"
-    )
-
-
-class WarehouseStock(Base):
-    __tablename__ = "warehouse_stock"
-
-    id = Column(Integer, primary_key=True, index=True)
-
-    medicine_id = Column(
+    role_id = Column(
         Integer,
-        ForeignKey("medicines.id")
+        ForeignKey("roles.id"),
+        nullable=False
     )
 
-    warehouse_name = Column(String(100))
-
-    location = Column(String(100))
-
-    stock_quantity = Column(Integer)
-
-    medicine = relationship(
-        "Medicine",
-        back_populates="warehouse_stocks"
+    role = relationship(
+        "Role",
+        back_populates="users"
     )
-# Add your SQLAlchemy models here
+
+
+# =====================================================
+# ROLE
+# =====================================================
+
+class Role(Base):
+    __tablename__ = "roles"
+
+    id = Column(Integer, primary_key=True, index=True)
+
+    name = Column(
+        String(100),
+        unique=True,
+        nullable=False
+    )
+
+    users = relationship(
+        "User",
+        back_populates="role"
+    )
+
+    permissions = relationship(
+        "RolePermission",
+        back_populates="role",
+        cascade="all, delete-orphan"
+    )
+
+
+# =====================================================
+# PERMISSION
+# =====================================================
+
+class Permission(Base):
+    __tablename__ = "permissions"
+
+    id = Column(Integer, primary_key=True, index=True)
+
+    name = Column(
+        String(100),
+        unique=True,
+        nullable=False
+    )
+
+    description = Column(String(255))
+
+    roles = relationship(
+        "RolePermission",
+        back_populates="permission",
+        cascade="all, delete-orphan"
+    )
+
+
+# =====================================================
+# ROLE PERMISSION
+# =====================================================
+
+class RolePermission(Base):
+    __tablename__ = "role_permissions"
+
+    id = Column(Integer, primary_key=True, index=True)
+
+    role_id = Column(
+        Integer,
+        ForeignKey("roles.id"),
+        nullable=False
+    )
+
+    permission_id = Column(
+        Integer,
+        ForeignKey("permissions.id"),
+        nullable=False
+    )
+
+    role = relationship(
+        "Role",
+        back_populates="permissions"
+    )
+
+    permission = relationship(
+        "Permission",
+        back_populates="roles"
+    )
+

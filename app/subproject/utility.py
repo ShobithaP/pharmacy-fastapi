@@ -1,7 +1,8 @@
 from sqlalchemy.orm import Session
-
-from models import Medicine
-
+from app.subproject.medicines.medicine_model import Medicine
+from app.subproject.warehouse.warehouse_model import WarehouseStock
+#
+# from models import Medicine
 
 def create_medicine(
         db: Session,
@@ -31,7 +32,7 @@ def get_all_medicines(
 
     return medicines
 # Business logic functions go here
-from models import WarehouseStock
+# from models import WarehouseStock
 
 
 def create_warehouse_stock(db, stock):

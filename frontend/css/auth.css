@@ -1,0 +1,119 @@
+.auth-container {
+
+    height: 100vh;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    background: #eef2f7;
+
+}
+
+.auth-card {
+
+    width: 420px;
+
+    background: white;
+
+    padding: 40px;
+
+    border-radius: 12px;
+
+    box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+
+}
+
+.auth-card h1 {
+
+    text-align: center;
+
+    margin-bottom: 30px;
+
+    font-size: 28px;
+
+}
+
+.form-group {
+
+    display: flex;
+
+    flex-direction: column;
+
+    margin-bottom: 20px;
+
+}
+
+label {
+
+    margin-bottom: 8px;
+
+    font-weight: 600;
+
+}
+
+input,
+select {
+
+    padding: 12px;
+
+    border: 1px solid #ccc;
+
+    border-radius: 6px;
+
+    font-size: 15px;
+
+}
+
+input:focus,
+select:focus {
+
+    outline: none;
+
+    border-color: #2563eb;
+
+}
+
+.btn-primary {
+
+    width: 100%;
+
+    padding: 14px;
+
+    border: none;
+
+    background: #2563eb;
+
+    color: white;
+
+    font-size: 16px;
+
+    border-radius: 6px;
+
+    cursor: pointer;
+
+}
+
+.btn-primary:hover {
+
+    background: #1d4ed8;
+
+}
+
+.bottom-text {
+
+    text-align: center;
+
+    margin-top: 25px;
+
+}
+
+.bottom-text a {
+
+    color: #2563eb;
+
+    font-weight: bold;
+
+}

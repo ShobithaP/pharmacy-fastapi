@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Dashboard | Pharmacy Inventory Management System</title>
+
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+</head>
+
+<body>
+
+<div class="layout">
+
+    <main class="main-content">
+
+        <header class="topbar">
+
+            <div>
+                <h1>Dashboard</h1>
+
+                <h2>
+                    Welcome back,
+                    <span id="userName">User</span>
+                </h2>
+            </div>
+
+            <div class="role-badge">
+                Role:
+                <span id="roleBadge">User</span>
+            </div>
+
+        </header>
+
+        <section class="stats">
+
+            <div class="stat-card">
+                <i class="fa-solid fa-pills"></i>
+                <h3>Total Medicines</h3>
+                <h2 id="medicineCount">0</h2>
+            </div>
+
+            <div class="stat-card">
+                <i class="fa-solid fa-warehouse"></i>
+                <h3>Total Warehouses</h3>
+                <h2 id="warehouseCount">0</h2>
+            </div>
+
+            <div class="stat-card" id="userStats">
+                <i class="fa-solid fa-users"></i>
+                <h3>Total Users</h3>
+                <h2 id="userCount">0</h2>
+            </div>
+
+        </section>
+
+        <h2 class="section-title">Quick Actions</h2>
+
+        <section class="cards">
+
+            <div class="action-card" id="medicineCard">
+
+                <i class="fa-solid fa-pills"></i>
+
+                <h3>Medicines</h3>
+
+                <p>
+                    View medicines, add new medicines,
+                    delete records and manage CSV files.
+                </p>
+
+                <button>Open Module</button>
+
+            </div>
+
+            <div class="action-card" id="warehouseCard">
+
+                <i class="fa-solid fa-warehouse"></i>
+
+                <h3>Warehouses</h3>
+
+                <p>
+                    View warehouse stock,
+                    manage warehouse inventory,
+                    upload warehouse CSV.
+                </p>
+
+                <button>Open Module</button>
+
+            </div>
+
+            <div class="action-card" id="userCard">
+
+                <i class="fa-solid fa-users"></i>
+
+                <h3>Users</h3>
+
+                <p>
+                    Manage system users,
+                    create new users,
+                    delete existing users.
+                </p>
+
+                <button>Open Module</button>
+
+            </div>
+
+        </section>
+
+    </main>
+
+</div>
+
+<script type="module" src="js/dashboard.js"></script>
+
+</body>
+
+</html>

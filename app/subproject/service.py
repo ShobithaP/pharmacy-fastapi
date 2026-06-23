@@ -36,7 +36,7 @@ def get_medicine_service(
         medicine_id
     )
 
-    if not medicine:
+    if medicine is None:
         raise HTTPException(
             status_code=404,
             detail="Medicine not found"
@@ -54,7 +54,7 @@ def add_stock_service(
         stock.medicine_id
     )
 
-    if not medicine:
+    if medicine is None:
         raise HTTPException(
             status_code=404,
             detail="Medicine not found"

@@ -3,15 +3,39 @@ from fastapi.responses import FileResponse
 from sqlalchemy.orm import Session
 import pandas as pd
 
-from app.subproject.api import router
-from config.db import engine, get_db
-from models import Base, Medicine, WarehouseStock
+from fastapi.middleware.cors import CORSMiddleware
 
+from config.db import engine, get_db
+from models import Base
+from app.subproject.warehouse.warehouse_api import router as warehouse_router
+
+from app.subproject.api import router
+from app.subproject.auth_api import router as auth_router
+from app.subproject.medicines.medicine_api import router as medicine_router
+from app.subproject.medicines.medicine_model import Medicine
+from app.subproject.warehouse.warehouse_model import WarehouseStock
 Base.metadata.create_all(bind=engine)
 
 app = FastAPI(title="Pharmacy API")
 
-app.include_router(router)
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=[
+        "http://localhost:5500",
+        "http://127.0.0.1:5500",
+        "http://0.0.0.0:5500"
+    ],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+app.include_router(router)          # Only if api.py is still used
+app.include_router(auth_router)
+app.include_router(medicine_router)
+
+
+app.include_router(warehouse_router)
 
 @app.get("/")
 def home():

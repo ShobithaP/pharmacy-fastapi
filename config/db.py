@@ -1,25 +1,32 @@
-from sqlalchemy import create_engine
-from sqlalchemy.orm import sessionmaker
-from sqlalchemy.orm import declarative_base
 from urllib.parse import quote_plus
 
-from config.config import settings
+from sqlalchemy import create_engine
+from sqlalchemy.orm import declarative_base, sessionmaker
 
-password = quote_plus(settings.DB_PASSWORD)
-
-DATABASE_URL = (
-    f"mysql+pymysql://"
-    f"{settings.DB_USER}:{password}"
-    f"@{settings.DB_HOST}:{settings.DB_PORT}"
-    f"/{settings.DB_NAME}"
+from config.config import (
+    DB_HOST,
+    DB_PORT,
+    DB_NAME,
+    DB_USER,
+    DB_PASSWORD,
 )
 
-engine = create_engine(DATABASE_URL)
+DATABASE_URL = (
+    f"mysql+pymysql://{DB_USER}:{quote_plus(DB_PASSWORD)}"
+    f"@{DB_HOST}:{DB_PORT}/{DB_NAME}"
+)
+
+print(DATABASE_URL)
+
+engine = create_engine(
+    DATABASE_URL,
+    echo=True,
+)
 
 SessionLocal = sessionmaker(
     autocommit=False,
     autoflush=False,
-    bind=engine
+    bind=engine,
 )
 
 Base = declarative_base()

@@ -31,9 +31,11 @@ class MedicineCreate(BaseModel):
     price: float
 
 
-class MedicineResponse(MedicineCreate):
+class MedicineResponse(BaseModel):
     id: int
-    warehouse_stocks: list[WarehouseStockResponse] = []
+    name: str
+    manufacturer: str
+    price: float
 
     class Config:
         from_attributes = True
