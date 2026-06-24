@@ -15,6 +15,41 @@ from app.subproject.medicines.medicine_api import router as medicine_router
 from app.subproject.medicines.medicine_model import Medicine
 from app.subproject.warehouse.warehouse_model import WarehouseStock
 Base.metadata.create_all(bind=engine)
+from app.subproject.orders.order_api import (
+    router as order_router
+)
+
+from fastapi import FastAPI
+
+from app.middleware.logging_middleware import (
+    LoggingMiddleware
+)
+
+
+
+app = FastAPI()
+
+app.add_middleware(
+    LoggingMiddleware
+)
+from app.middleware.auth_middleware import (
+    AuthenticationMiddleware
+)
+
+from app.middleware.authorization_middleware import (
+    AuthorizationMiddleware
+)
+
+app.add_middleware(
+    AuthenticationMiddleware
+)
+
+app.add_middleware(
+    AuthorizationMiddleware
+)
+
+
+Base.metadata.create_all(bind=engine)
 
 app = FastAPI(title="Pharmacy API")
 
@@ -33,7 +68,7 @@ app.add_middleware(
 app.include_router(router)          # Only if api.py is still used
 app.include_router(auth_router)
 app.include_router(medicine_router)
-
+app.include_router(order_router)
 
 app.include_router(warehouse_router)
 

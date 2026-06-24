@@ -13,6 +13,8 @@ from app.subproject.medicines.medicine_model import Medicine
 from app.subproject.warehouse.warehouse_model import WarehouseStock
 from models import User
 
+
+
 from app.subproject.service import (
     add_medicine_service,
     get_medicines_service,
@@ -146,7 +148,7 @@ def get_medicine(
             "SUPER_ADMIN",
             "ADMIN",
             "PHARMACIST",
-            
+
             "CUSTOMER"
         )
     )
@@ -286,11 +288,26 @@ def add_stock(
         stock
     )
 
+from app.subproject.warehouse.warehouse_model import WarehouseStock
+from app.subproject.orders.order_model import Order
+
 @router.post("/medicines/delete/{medicine_id}")
 def delete_medicine(
     medicine_id: int,
     db: Session = Depends(get_db)
 ):
+
+    # Delete warehouse stock records
+    db.query(WarehouseStock).filter(
+        WarehouseStock.medicine_id == medicine_id
+    ).delete()
+
+    # Delete order records
+    db.query(Order).filter(
+        Order.medicine_id == medicine_id
+    ).delete()
+
+    # Delete medicine
     medicine = (
         db.query(Medicine)
         .filter(Medicine.id == medicine_id)
@@ -299,10 +316,11 @@ def delete_medicine(
 
     if medicine:
         db.delete(medicine)
-        db.commit()
+
+    db.commit()
 
     return {
-        "message": "Medicine deleted"
+        "message": "Medicine deleted successfully"
     }
 @router.post("/warehouse/delete/{stock_id}")
 def delete_warehouse(
@@ -341,3 +359,5 @@ def get_stocks(
     )
 ):
     return get_stocks_service(db)
+
+

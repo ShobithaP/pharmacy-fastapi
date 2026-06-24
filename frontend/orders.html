@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Orders | Pharmacy Inventory System</title>
+
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="css/users.css">
+
+</head>
+
+<body>
+
+<div class="layout">
+
+    <main class="content">
+
+        <header class="page-header">
+
+            <div>
+
+                <h1>Orders</h1>
+
+                <p>
+                    Manage customer and bulk orders.
+                </p>
+
+            </div>
+
+        </header>
+
+        <!-- CUSTOMER ORDER -->
+
+        <section
+            class="table-card"
+            id="customerOrderSection">
+
+            <h3>Place Customer Order</h3>
+
+            <form
+                id="orderForm"
+                style="
+                    display:flex;
+                    gap:10px;
+                    flex-wrap:wrap;
+                    margin-top:15px;
+                "
+            >
+
+                <select
+                    id="medicineSelect"
+                    required
+                    style="width:300px;"
+                >
+
+                    <option value="">
+                        Select Medicine
+                    </option>
+
+                </select>
+
+                <input
+                    type="number"
+                    id="quantity"
+                    min="1"
+                    placeholder="Quantity"
+                    required
+                >
+
+                <button
+                    type="submit"
+                    class="primary-btn"
+                >
+                    Place Order
+                </button>
+
+            </form>
+
+        </section>
+
+        <br>
+
+        <!-- BULK ORDER SECTION -->
+
+        <section
+            class="table-card"
+            id="bulkOrderSection">
+
+            <h3>Bulk Order</h3>
+
+            <div
+                style="
+                    display:flex;
+                    gap:10px;
+                    flex-wrap:wrap;
+                    margin-top:15px;
+                "
+            >
+
+                <select
+                    id="bulkMedicine"
+                    style="width:300px;"
+                >
+
+                    <option value="">
+                        Select Medicine
+                    </option>
+
+                </select>
+
+                <input
+                    type="number"
+                    id="bulkQuantity"
+                    placeholder="Bulk Quantity"
+                    min="1"
+                >
+
+                <button
+                    id="submitBulkOrder"
+                    class="primary-btn"
+                    type="button"
+                >
+                    Place Bulk Order
+                </button>
+
+            </div>
+
+        </section>
+
+        <br>
+
+        <!-- CUSTOMER ORDERS -->
+
+        <!-- CUSTOMER ORDERS -->
+
+<section class="table-card">
+
+    <h3>Customer Orders</h3>
+
+    <table>
+
+        <thead>
+
+            <tr>
+
+                <th>ID</th>
+                <th>Medicine ID</th>
+                <th>Quantity</th>
+                <th>Status</th>
+                <th>Actions</th>
+
+            </tr>
+
+        </thead>
+
+        <tbody id="customerOrdersTable">
+
+            <tr>
+
+                <td colspan="5">
+                    Loading customer orders...
+                </td>
+
+            </tr>
+
+        </tbody>
+
+    </table>
+
+</section>
+
+<br>
+
+<!-- BULK ORDERS -->
+
+<section class="table-card">
+
+    <h3>Bulk Orders</h3>
+
+    <table>
+
+        <thead>
+
+            <tr>
+
+                <th>ID</th>
+                <th>Medicine ID</th>
+                <th>Quantity</th>
+                <th>Status</th>
+                <th>Actions</th>
+
+            </tr>
+
+        </thead>
+
+        <tbody id="bulkOrdersTable">
+
+            <tr>
+
+                <td colspan="5">
+                    Loading bulk orders...
+                </td>
+
+            </tr>
+
+        </tbody>
+
+    </table>
+
+</section>
+
+            </table>
+
+        </section>
+
+    </main>
+
+</div>
+
+<script type="module" src="js/orders.js"></script>
+
+</body>
+
+</html>

@@ -2,14 +2,22 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="023aba9f-de8b-4b8e-b1a7-11f1958e995c" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.dockerignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/Dockerfile" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/js/Dockerfile" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/middleware/auth_middleware.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/middleware/authorization_middleware.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/middleware/logging_middleware.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/subproject/orders/order_api.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/subproject/orders/order_model.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/subproject/orders/order_schema.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/js/orders.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/orders.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/js/medicines.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/js/medicines.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/subproject/api.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/subproject/api.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/css/dashboard.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/css/dashboard.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/css/medicines.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/css/medicines.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/css/users.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/css/users.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/dashboard.html" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/dashboard.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/js/dashboard.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/js/dashboard.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -19,9 +27,10 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="Dockerfile" />
         <option value="Python Script" />
         <option value="HTML File" />
-        <option value="Dockerfile" />
+        <option value="JavaScript File" />
       </list>
     </option>
   </component>
@@ -73,7 +82,7 @@
       <option name="presentableId" value="Default" />
       <updated>1781847112075</updated>
       <workItem from="1781847113068" duration="42654000" />
-      <workItem from="1782129890610" duration="21315000" />
+      <workItem from="1782129890610" duration="37411000" />
     </task>
     <servers />
   </component>
@@ -85,7 +94,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/main.py</url>
-          <line>198</line>
+          <line>233</line>
           <option name="timeStamp" value="1" />
         </line-breakpoint>
       </breakpoints>

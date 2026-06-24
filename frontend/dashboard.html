@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="css/dashboard.css">
 
     <link rel="stylesheet"
-          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
 </head>
 
 <body>
@@ -20,15 +20,18 @@
 
     <main class="main-content">
 
+        <!-- Header -->
         <header class="topbar">
 
             <div>
+
                 <h1>Dashboard</h1>
 
                 <h2>
                     Welcome back,
                     <span id="userName">User</span>
                 </h2>
+
             </div>
 
             <div class="role-badge">
@@ -38,6 +41,7 @@
 
         </header>
 
+        <!-- Statistics -->
         <section class="stats">
 
             <div class="stat-card">
@@ -57,14 +61,28 @@
                 <h3>Total Users</h3>
                 <h2 id="userCount">0</h2>
             </div>
+                <div class="stat-card" id="orderStats">
 
+                    <i class="fa-solid fa-cart-shopping"></i>
+
+                    <h3>Total Orders</h3>
+
+                    <h2 id="orderCount">0</h2>
+
+                </div>
         </section>
 
-        <h2 class="section-title">Quick Actions</h2>
+        <!-- Quick Actions -->
+        <h2 class="section-title">
+            Quick Actions
+        </h2>
 
         <section class="cards">
 
-            <div class="action-card" id="medicineCard">
+            <!-- Medicines -->
+            <div
+                class="action-card"
+                id="medicineCard">
 
                 <i class="fa-solid fa-pills"></i>
 
@@ -75,11 +93,16 @@
                     delete records and manage CSV files.
                 </p>
 
-                <button>Open Module</button>
+                <button>
+                    Open Module
+                </button>
 
             </div>
 
-            <div class="action-card" id="warehouseCard">
+            <!-- Warehouses -->
+            <div
+                class="action-card"
+                id="warehouseCard">
 
                 <i class="fa-solid fa-warehouse"></i>
 
@@ -91,11 +114,16 @@
                     upload warehouse CSV.
                 </p>
 
-                <button>Open Module</button>
+                <button>
+                    Open Module
+                </button>
 
             </div>
 
-            <div class="action-card" id="userCard">
+            <!-- Users -->
+            <div
+                class="action-card"
+                id="userCard">
 
                 <i class="fa-solid fa-users"></i>
 
@@ -107,7 +135,30 @@
                     delete existing users.
                 </p>
 
-                <button>Open Module</button>
+                <button>
+                    Open Module
+                </button>
+
+            </div>
+
+            <!-- Orders -->
+            <div
+                class="action-card"
+                id="ordersCard">
+
+                <i class="fa-solid fa-cart-shopping"></i>
+
+                <h3>Orders</h3>
+
+                <p>
+                    Manage customer orders,
+                    bulk orders, approval workflows,
+                    and order tracking.
+                </p>
+
+                <button>
+                    Open Module
+                </button>
 
             </div>
 
@@ -117,7 +168,10 @@
 
 </div>
 
-<script type="module" src="js/dashboard.js"></script>
+<script
+    type="module"
+    src="js/dashboard.js">
+</script>
 
 </body>
 

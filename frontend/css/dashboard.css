@@ -101,6 +101,12 @@
         flex:1;
         padding:35px;
     }
+     .topbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+}
 
     /* ==============================
        Header
@@ -122,14 +128,29 @@
         color:#666;
     }
 
-    .role-badge{
-        background:#2563eb;
-        color:white;
-        padding:12px 20px;
-        border-radius:30px;
-        font-weight:bold;
-    }
+.role-badge {
+    display: inline-flex !important;
+    align-items: center;
+    justify-content: center;
 
+    background: #eff6ff;
+    color: #2563eb;
+
+    border: 1px solid #bfdbfe;
+
+    padding: 8px 14px;
+
+    border-radius: 999px;
+
+    font-size: 14px;
+    font-weight: 600;
+
+    width: auto !important;
+    min-width: unset !important;
+    max-width: max-content !important;
+
+    flex: 0 0 auto;
+}
     /* ==============================
        Statistics
     ============================== */
@@ -189,13 +210,34 @@
         gap:25px;
     }
 
-    .action-card{
-        background:white;
-        border-radius:15px;
-        padding:30px;
-        box-shadow:0 6px 20px rgba(0,0,0,.08);
-        transition:.3s;
-    }
+    .action-card {
+
+    background: white;
+
+    border-radius: 24px;
+
+    border: 1px solid #e5e7eb;
+
+    padding: 30px;
+
+    min-height: 340px;
+
+    display: flex;
+    flex-direction: column;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 8px 24px rgba(
+            0,
+            0,
+            0,
+            0.05
+        );
+
+    transition: .3s ease;
+
+}
 
     .action-card:hover{
         transform:translateY(-6px);
@@ -250,12 +292,12 @@
             padding:20px;
         }
 
-        .topbar{
-            flex-direction:column;
-            align-items:flex-start;
-            gap:15px;
-        }
-
+        .topbar {
+                display: flex;
+                justify-content: space-between;
+                align-items: flex-start;
+                margin-bottom: 30px;
+            }
     }
 
     @media(max-width:768px){
@@ -283,3 +325,10 @@
         }
 
     }
+#roleBadge {
+    display: inline;
+}
+
+.role-badge {
+    width: fit-content !important;
+}

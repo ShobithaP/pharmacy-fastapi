@@ -4,47 +4,72 @@
     box-sizing: border-box;
 }
 
+body {
+    font-family: "Segoe UI", Arial, sans-serif;
+    background: #f8fafc;
+    color: #1f2937;
+}
+
+/* =================================
+   PAGE LAYOUT
+================================= */
+
 .content {
     flex: 1;
-    padding: 35px;
-    background: #f5f7fb;
+    padding: 40px;
+    background: #f8fafc;
     min-height: 100vh;
 }
 
-/* Header */
+/* =================================
+   HEADER
+================================= */
 
 .page-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 30px;
+    margin-bottom: 35px;
 }
 
 .page-header h1 {
-    font-size: 30px;
-    color: #1f2937;
+    font-size: 38px;
+    font-weight: 700;
+    color: #111827;
 }
 
 .page-header p {
-    margin-top: 5px;
-    color: #6b7280;
+    margin-top: 8px;
+    color: #64748b;
+    font-size: 15px;
 }
 
-/* Buttons */
+/* =================================
+   BUTTONS
+================================= */
 
 .primary-btn {
-    background: #2563eb;
-    color: #fff;
     border: none;
     padding: 12px 22px;
-    border-radius: 8px;
+    border-radius: 12px;
+
+    background: linear-gradient(
+        135deg,
+        #2563eb,
+        #3b82f6
+    );
+
+    color: white;
     cursor: pointer;
+
     font-size: 15px;
+    font-weight: 600;
+
     transition: 0.3s;
 }
 
 .primary-btn:hover {
-    background: #1d4ed8;
+    transform: translateY(-2px);
 }
 
 .secondary-btn {
@@ -52,7 +77,7 @@
     color: #111827;
     border: none;
     padding: 12px 22px;
-    border-radius: 8px;
+    border-radius: 12px;
     cursor: pointer;
     transition: 0.3s;
 }
@@ -61,7 +86,9 @@
     background: #d1d5db;
 }
 
-/* Toolbar */
+/* =================================
+   TOOLBAR
+================================= */
 
 .toolbar {
     margin-bottom: 25px;
@@ -70,26 +97,60 @@
 .toolbar input {
     width: 350px;
     max-width: 100%;
-    padding: 12px;
+
+    padding: 12px 15px;
+
     border: 1px solid #d1d5db;
-    border-radius: 8px;
+    border-radius: 10px;
+
     outline: none;
+
     font-size: 15px;
+
     transition: .3s;
 }
 
 .toolbar input:focus {
     border-color: #2563eb;
+    box-shadow: 0 0 0 3px rgba(
+        37,
+        99,
+        235,
+        0.1
+    );
 }
 
-/* Table */
+/* =================================
+   TABLE CARD
+================================= */
 
 .table-card {
-    background: #fff;
-    border-radius: 12px;
+    background: white;
+
+    border-radius: 20px;
+
+    border: 1px solid #e5e7eb;
+
     overflow: hidden;
-    box-shadow: 0 4px 12px rgba(0,0,0,.08);
+
+    box-shadow:
+        0 8px 30px
+        rgba(0,0,0,.05);
 }
+
+.table-card + .table-card {
+    margin-top: 30px;
+}
+
+.table-card h3 {
+    padding: 20px 24px;
+    color: #111827;
+    border-bottom: 1px solid #eef2f7;
+}
+
+/* =================================
+   TABLE
+================================= */
 
 table {
     width: 100%;
@@ -97,65 +158,121 @@ table {
 }
 
 thead {
-    background: #2563eb;
+    background: linear-gradient(
+        135deg,
+        #2563eb,
+        #3b82f6
+    );
     color: white;
 }
 
 th {
-    padding: 16px;
+    padding: 18px;
     text-align: left;
     font-weight: 600;
+    letter-spacing: 0.3px;
 }
 
 td {
-    padding: 16px;
-    border-bottom: 1px solid #ececec;
+    padding: 18px;
+    border-bottom: 1px solid #f1f5f9;
+}
+
+tbody tr {
+    transition: .2s ease;
 }
 
 tbody tr:hover {
     background: #f8fafc;
 }
 
-/* Action Buttons */
+/* =================================
+   ACTION BUTTONS
+================================= */
 
 .action-btn {
     border: none;
     padding: 8px 14px;
-    border-radius: 6px;
+    border-radius: 8px;
     cursor: pointer;
-    color: white;
     font-size: 14px;
     transition: .3s;
 }
+
 .action-btn.deleteBtn {
-    background-color: #ffffff !important;
-    color: #000000 !important;
-    border: 1px solid #d1d5db !important;
+    background: #ef4444;
+    color: white;
 }
 
 .action-btn.deleteBtn:hover {
-    background-color: #f3f4f6 !important;
-    color: #000000 !important;
+    background: #dc2626;
 }
 
-/* Empty State */
+.approveBtn,
+.approveBulkBtn {
+    background: #16a34a;
+    color: white;
+
+    border: none;
+
+    padding: 8px 16px;
+
+    border-radius: 8px;
+
+    cursor: pointer;
+
+    font-weight: 600;
+}
+
+.approveBtn:hover,
+.approveBulkBtn:hover {
+    background: #15803d;
+}
+
+.deleteOrderBtn {
+    background: #dc2626;
+    color: white;
+
+    border: none;
+
+    padding: 8px 16px;
+
+    border-radius: 8px;
+
+    cursor: pointer;
+
+    font-weight: 600;
+}
+
+.deleteOrderBtn:hover {
+    background: #b91c1c;
+}
+
+/* =================================
+   EMPTY STATE
+================================= */
 
 .empty-state {
     text-align: center;
-    color: #6b7280;
+    color: #64748b;
     padding: 40px;
-    font-size: 16px;
+    font-size: 15px;
 }
 
-/* Modal */
+/* =================================
+   MODAL
+================================= */
 
 .modal {
     display: none;
     position: fixed;
     inset: 0;
+
     background: rgba(0,0,0,.45);
+
     justify-content: center;
     align-items: center;
+
     z-index: 1000;
 }
 
@@ -164,11 +281,15 @@ tbody tr:hover {
 }
 
 .modal-content {
-    width: 450px;
+    width: 500px;
     max-width: 95%;
+
     background: white;
-    border-radius: 12px;
+
+    border-radius: 20px;
+
     padding: 30px;
+
     animation: popup .25s ease;
 }
 
@@ -183,12 +304,11 @@ tbody tr:hover {
         transform: translateY(0);
         opacity: 1;
     }
-
 }
 
 .modal-content h2 {
-    margin-bottom: 20px;
-    color: #1f2937;
+    margin-bottom: 24px;
+    color: #111827;
 }
 
 .form-group {
@@ -202,28 +322,44 @@ tbody tr:hover {
     font-weight: 500;
 }
 
-.form-group input {
+.form-group input,
+.form-group select {
     width: 100%;
+
     padding: 12px;
+
     border: 1px solid #d1d5db;
-    border-radius: 8px;
+
+    border-radius: 10px;
+
     font-size: 15px;
+
     outline: none;
+
     transition: .3s;
 }
 
-.form-group input:focus {
+.form-group input:focus,
+.form-group select:focus {
     border-color: #2563eb;
+    box-shadow: 0 0 0 3px rgba(
+        37,
+        99,
+        235,
+        0.1
+    );
 }
 
 .modal-buttons {
     display: flex;
     justify-content: flex-end;
     gap: 10px;
-    margin-top: 20px;
+    margin-top: 25px;
 }
 
-/* Responsive */
+/* =================================
+   RESPONSIVE
+================================= */
 
 @media (max-width: 900px) {
 
@@ -244,7 +380,6 @@ tbody tr:hover {
     table {
         min-width: 800px;
     }
-
 }
 
 @media (max-width: 600px) {
@@ -254,7 +389,7 @@ tbody tr:hover {
     }
 
     .page-header h1 {
-        font-size: 24px;
+        font-size: 28px;
     }
 
     .modal-content {
@@ -264,7 +399,4 @@ tbody tr:hover {
     .modal-buttons {
         flex-direction: column;
     }
-
-
-
 }
