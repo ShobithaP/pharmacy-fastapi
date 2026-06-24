@@ -1,0 +1,48 @@
+version: "3.9"
+
+services:
+  db:
+    image: mysql:8.4
+    restart: always
+
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_DATABASE: pharmacy_db
+      MYSQL_USER: devuser
+      MYSQL_PASSWORD: DevUser@123
+
+    ports:
+      - "3306:3306"
+
+    volumes:
+      - mysql-data:/var/lib/mysql
+
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+
+    depends_on:
+      - db
+
+    environment:
+      DATABASE_URL: mysql+pymysql://devuser:DevUser@123@db:3306/pharmacy_db
+
+    ports:
+      - "8000:8000"
+
+    command: uvicorn main:app --host 0.0.0.0 --port 8000
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+
+    depends_on:
+      - backend
+
+    ports:
+      - "5500:80"
+
+volumes:
+  mysql-data:

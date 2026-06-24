@@ -15,23 +15,55 @@ const priceInput = document.getElementById("price");
 
 const searchInput = document.getElementById("searchMedicine");
 
+const role =
+    (localStorage.getItem("role") || "")
+        .toUpperCase();
+
+/* ==========================
+   CUSTOMER RESTRICTIONS
+========================== */
+
+if (role === "CUSTOMER") {
+
+    document
+        .getElementById("addMedicineBtn")
+        ?.remove();
+
+    document
+        .getElementById("uploadMedicineBtn")
+        ?.remove();
+
+    document
+        .getElementById("downloadMedicineBtn")
+        ?.remove();
+
+}
+
 let medicines = [];
 
-window.addEventListener("DOMContentLoaded", loadMedicines);
+window.addEventListener(
+    "DOMContentLoaded",
+    loadMedicines
+);
 
-addBtn.addEventListener("click", () => {
+/* ==========================
+   MODAL
+========================== */
+
+addBtn?.addEventListener("click", () => {
 
     form.reset();
 
     medicineId.value = "";
 
-    modalTitle.textContent = "Add Medicine";
+    modalTitle.textContent =
+        "Add Medicine";
 
     modal.classList.add("show");
 
 });
 
-cancelBtn.addEventListener("click", () => {
+cancelBtn?.addEventListener("click", () => {
 
     modal.classList.remove("show");
 
@@ -47,11 +79,17 @@ window.addEventListener("click", (e) => {
 
 });
 
+/* ==========================
+   LOAD MEDICINES
+========================== */
+
 async function loadMedicines() {
 
     try {
 
-        medicines = await Api.get("/medicines");
+        medicines = await Api.get(
+            "/medicines"
+        );
 
         renderTable(medicines);
 
@@ -66,8 +104,14 @@ async function loadMedicines() {
                 </td>
             </tr>
         `;
+
     }
+
 }
+
+/* ==========================
+   RENDER TABLE
+========================== */
 
 function renderTable(data) {
 
@@ -84,6 +128,7 @@ function renderTable(data) {
         `;
 
         return;
+
     }
 
     data.forEach((medicine) => {
@@ -101,19 +146,30 @@ function renderTable(data) {
 
                 <td>
 
-                    <button
-                        class="action-btn deleteBtn"
-                        data-id="${medicine.id}">
-                        Delete
-                    </button>
+                    ${
+                        role === "CUSTOMER"
+                            ? ""
+                            : `
+                                <button
+                                    class="action-btn deleteBtn"
+                                    data-id="${medicine.id}">
+                                    Delete
+                                </button>
+                              `
+                    }
 
                 </td>
 
             </tr>
         `;
+
     });
 
 }
+
+/* ==========================
+   ADD MEDICINE
+========================== */
 
 form.addEventListener("submit", async (e) => {
 
@@ -123,9 +179,12 @@ form.addEventListener("submit", async (e) => {
 
         name: nameInput.value.trim(),
 
-        manufacturer: manufacturerInput.value.trim(),
+        manufacturer:
+            manufacturerInput.value.trim(),
 
-        price: Number(priceInput.value)
+        price: Number(
+            priceInput.value
+        )
 
     };
 
@@ -150,52 +209,72 @@ form.addEventListener("submit", async (e) => {
 
         console.error(error);
 
-        alert("Unable to save medicine");
+        alert(
+            "Unable to save medicine"
+        );
 
     }
 
 });
 
-table.addEventListener("click", async (e) => {
+/* ==========================
+   DELETE MEDICINE
+========================== */
 
-    const id = e.target.dataset.id;
+table.addEventListener(
+    "click",
+    async (e) => {
 
-    if (!id) return;
+        const id =
+            e.target.dataset.id;
 
-    if (e.target.classList.contains("deleteBtn")) {
+        if (!id) return;
 
         if (
-            !confirm(
-                "Are you sure you want to delete this medicine?"
+            e.target.classList.contains(
+                "deleteBtn"
             )
         ) {
-            return;
-        }
 
-        try {
+            if (
+                !confirm(
+                    "Are you sure you want to delete this medicine?"
+                )
+            ) {
+                return;
+            }
 
-            await Api.post(
-    `/medicines/delete/${id}`,
-    {}
-);
+            try {
 
-            loadMedicines();
+                await Api.post(
+                    `/medicines/delete/${id}`,
+                    {}
+                );
 
-        } catch (error) {
+                loadMedicines();
 
-            console.error(error);
+            } catch (error) {
 
-            alert("Delete failed");
+                console.error(error);
+
+                alert(
+                    "Delete failed"
+                );
+
+            }
 
         }
 
     }
+);
 
-});
+/* ==========================
+   SEARCH
+========================== */
 
-if (searchInput) {
-
-    searchInput.addEventListener("input", () => {
+searchInput?.addEventListener(
+    "input",
+    () => {
 
         const keyword =
             searchInput.value
@@ -204,108 +283,138 @@ if (searchInput) {
 
         if (!keyword) {
 
-            renderTable(medicines);
+            renderTable(
+                medicines
+            );
 
             return;
+
         }
 
-        const filtered = medicines.filter(medicine =>
+        const filtered =
+            medicines.filter(
+                (medicine) =>
 
-            `
-            ${medicine.id}
-            ${medicine.name}
-            ${medicine.manufacturer}
-            ${medicine.price}
-            `
-            .toLowerCase()
-            .includes(keyword)
+                    `
+                    ${medicine.id}
+                    ${medicine.name}
+                    ${medicine.manufacturer}
+                    ${medicine.price}
+                    `
+                        .toLowerCase()
+                        .includes(keyword)
 
+            );
+
+        renderTable(
+            filtered
         );
 
-        renderTable(filtered);
+    }
+);
 
-    });
-
-}
 /* ==========================
    UPLOAD CSV
 ========================== */
 
 document
-    .getElementById("uploadMedicineBtn")
-    .addEventListener("click", () => {
+    .getElementById(
+        "uploadMedicineBtn"
+    )
+    ?.addEventListener(
+        "click",
+        () => {
 
-        document
-            .getElementById("medicineCsvFile")
-            .click();
+            document
+                .getElementById(
+                    "medicineCsvFile"
+                )
+                .click();
 
-    });
+        }
+    );
 
 document
-    .getElementById("medicineCsvFile")
-    .addEventListener("change", async (e) => {
+    .getElementById(
+        "medicineCsvFile"
+    )
+    ?.addEventListener(
+        "change",
+        async (e) => {
 
-        try {
+            try {
 
-            const file = e.target.files[0];
+                const file =
+                    e.target.files[0];
 
-            if (!file) return;
+                if (!file) return;
 
-            const formData = new FormData();
+                const formData =
+                    new FormData();
 
-            formData.append(
-                "file",
-                file
-            );
+                formData.append(
+                    "file",
+                    file
+                );
 
-            const response = await fetch(
-                "http://127.0.0.1:8000/medicines/upload",
-                {
-                    method: "POST",
-                    body: formData
+                const response =
+                    await fetch(
+                        "http://127.0.0.1:8000/medicines/upload",
+                        {
+                            method:
+                                "POST",
+                            body:
+                                formData
+                        }
+                    );
+
+                if (
+                    !response.ok
+                ) {
+
+                    alert(
+                        "Upload failed"
+                    );
+
+                    return;
+
                 }
-            );
 
-            if (!response.ok) {
+                alert(
+                    "CSV uploaded successfully"
+                );
 
-                const text =
-                    await response.text();
+                loadMedicines();
 
-                console.error(text);
+            } catch (error) {
 
-                alert("Upload failed");
+                console.error(
+                    error
+                );
 
-                return;
+                alert(
+                    "CSV upload failed"
+                );
 
             }
 
-            alert(
-                "CSV uploaded successfully"
-            );
-
-            loadMedicines();
-
-        } catch (error) {
-
-            console.error(error);
-
-            alert(
-                "CSV upload failed"
-            );
-
         }
-
-    });
+    );
 
 /* ==========================
    DOWNLOAD CSV
 ========================== */
 
 document
-    .getElementById("downloadMedicineBtn")
-    .addEventListener("click", () => {
+    .getElementById(
+        "downloadMedicineBtn"
+    )
+    ?.addEventListener(
+        "click",
+        () => {
 
-        window.location.href =
-            "http://127.0.0.1:8000/medicines/download";
+            window.location.href =
+                "http://127.0.0.1:8000/medicines/download";
 
-    });
+        }
+    );
