@@ -406,15 +406,76 @@ document
 ========================== */
 
 document
-    .getElementById(
-        "downloadMedicineBtn"
-    )
+    .getElementById("downloadMedicineBtn")
     ?.addEventListener(
         "click",
-        () => {
+        async () => {
 
-            window.location.href =
-                "http://127.0.0.1:8000/medicines/download";
+            try {
+
+                const token =
+                    localStorage.getItem(
+                        "token"
+                    );
+
+                const response =
+                    await fetch(
+                        "http://127.0.0.1:8000/medicines/download",
+                        {
+                            method: "GET",
+                            headers: {
+                                Authorization:
+                                    `Bearer ${token}`
+                            }
+                        }
+                    );
+
+                if (!response.ok) {
+
+                    throw new Error(
+                        `HTTP ${response.status}`
+                    );
+
+                }
+
+                const blob =
+                    await response.blob();
+
+                const url =
+                    window.URL.createObjectURL(
+                        blob
+                    );
+
+                const a =
+                    document.createElement(
+                        "a"
+                    );
+
+                a.href = url;
+                a.download =
+                    "medicines.csv";
+
+                document.body.appendChild(
+                    a
+                );
+
+                a.click();
+
+                a.remove();
+
+                window.URL.revokeObjectURL(
+                    url
+                );
+
+            } catch (error) {
+
+                console.error(error);
+
+                alert(
+                    "CSV download failed"
+                );
+
+            }
 
         }
     );

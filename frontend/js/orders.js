@@ -1,3 +1,4 @@
+
 import Api from "./api.js";
 
 const customerOrdersTable =
@@ -34,34 +35,36 @@ const role =
     (localStorage.getItem("role") || "")
         .toUpperCase();
 
+
 /* ==========================
    ROLE UI
 ========================== */
 
-if (role === "PHARMACIST") {
+console.log("Current Role:", role);
 
-    document
-        .getElementById(
-            "customerOrderSection"
-        )
-        ?.remove();
+window.addEventListener("DOMContentLoaded", () => {
 
-}
+    if (role === "PHARMACIST") {
 
-if (role !== "PHARMACIST") {
+        document
+            .getElementById("customerOrderSection")
+            ?.remove();
 
-    document
-        .getElementById(
-            "bulkOrderSection"
-        )
-        ?.remove();
+    }
 
-}
+    if (role === "CUSTOMER") {
 
-/* ==========================
-   LOAD MEDICINES
-========================== */
+        document
+            .getElementById("bulkOrderSection")
+            ?.remove();
 
+        document
+            .getElementById("bulkOrdersViewSection")
+            ?.remove();
+
+    }
+
+});
 async function loadMedicines() {
 
     try {
@@ -148,6 +151,8 @@ async function loadOrders() {
                     order.order_type ===
                     "BULK"
             );
+
+
 
         if (customerOrders.length === 0) {
 
@@ -538,3 +543,19 @@ document.addEventListener(
 );
 loadMedicines();
 loadOrders();
+
+window.addEventListener("load", () => {
+
+    if (role === "CUSTOMER") {
+
+        document
+            .getElementById("bulkOrderSection")
+            ?.remove();
+
+        document
+            .getElementById("bulkOrdersViewSection")
+            ?.remove();
+
+    }
+
+});

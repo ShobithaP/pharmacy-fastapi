@@ -136,6 +136,42 @@ def get_medicines(
     return get_medicines_service(db)
 
 
+@router.get("/medicines/download")
+def download_medicines_csv(
+    db: Session = Depends(get_db)
+):
+
+    medicines = db.query(Medicine).all()
+
+    output = io.StringIO()
+
+    writer = csv.writer(output)
+
+    writer.writerow([
+        "name",
+        "manufacturer",
+        "price"
+    ])
+
+    for medicine in medicines:
+
+        writer.writerow([
+            medicine.name,
+            medicine.manufacturer,
+            medicine.price
+        ])
+
+    output.seek(0)
+
+    return StreamingResponse(
+        iter([output.getvalue()]),
+        media_type="text/csv",
+        headers={
+            "Content-Disposition":
+            "attachment; filename=medicines.csv"
+        }
+    )
+
 @router.get(
     "/medicines/{medicine_id}",
     response_model=MedicineResponse
@@ -191,42 +227,6 @@ async def upload_medicines(
         "message": "Medicines uploaded successfully"
     }
 
-
-@router.get("/medicines/download")
-def download_medicines_csv(
-    db: Session = Depends(get_db)
-):
-
-    medicines = db.query(Medicine).all()
-
-    output = io.StringIO()
-
-    writer = csv.writer(output)
-
-    writer.writerow([
-        "name",
-        "manufacturer",
-        "price"
-    ])
-
-    for medicine in medicines:
-
-        writer.writerow([
-            medicine.name,
-            medicine.manufacturer,
-            medicine.price
-        ])
-
-    output.seek(0)
-
-    return StreamingResponse(
-        iter([output.getvalue()]),
-        media_type="text/csv",
-        headers={
-            "Content-Disposition":
-            "attachment; filename=medicines.csv"
-        }
-    )
 
 
 @router.get("/warehouse/download")

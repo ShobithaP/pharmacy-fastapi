@@ -143,3 +143,10 @@ td{
 .approveBtn:hover {
     background: #1d4ed8;
 }
+.modal {
+    display: none;
+}
+
+.modal.show {
+    display: flex;
+}

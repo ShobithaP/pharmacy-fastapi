@@ -5,12 +5,14 @@
 
     <meta charset="UTF-8">
 
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
 
     <title>Users Management</title>
 
     <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="css/users.css">
 
 </head>
 
@@ -33,8 +35,9 @@
         <div style="display:flex; gap:10px;">
 
             <button
-                onclick="location.href='dashboard.html'"
-                class="secondary-btnss="primary-btn">
+                id="addUserBtn"
+                type="button"
+                class="primary-btn">
 
                 + Add User
 
@@ -76,9 +79,7 @@
                 <tr>
 
                     <td colspan="5">
-
                         Loading users...
-
                     </td>
 
                 </tr>
@@ -197,8 +198,10 @@
 
 </div>
 
-<script type="module" src="js/users.js"></script>
-<link rel="stylesheet" href="css/users.css">
+<script
+    type="module"
+    src="js/users.js"></script>
+
 </body>
 
 </html>

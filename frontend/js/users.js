@@ -175,3 +175,148 @@ document
     );
 
 loadUsers();
+document
+    .getElementById("addUserBtn")
+    ?.addEventListener("click", () => {
+
+        document
+            .getElementById("userModal")
+            ?.classList.add("show");
+
+    });
+document
+    .getElementById("cancelBtn")
+    ?.addEventListener("click", () => {
+
+        document
+            .getElementById("userModal")
+            ?.classList.remove("show");
+
+    });
+document
+    .getElementById("userForm")
+    ?.addEventListener(
+        "submit",
+        async (e) => {
+
+            e.preventDefault();
+
+            try {
+
+                await Api.post(
+                    "/auth/register",
+                    {
+                        username:
+                            document.getElementById(
+                                "username"
+                            ).value,
+
+                        email:
+                            document.getElementById(
+                                "email"
+                            ).value,
+
+                        password:
+                            document.getElementById(
+                                "password"
+                            ).value,
+
+                        role:
+                            document.getElementById(
+                                "role"
+                            ).value
+                    }
+                );
+
+                alert(
+                    "User created successfully"
+                );
+
+                document
+                    .getElementById("userModal")
+                    ?.classList.remove(
+                        "show"
+                    );
+
+                document
+                    .getElementById("userForm")
+                    ?.reset();
+
+                loadUsers();
+
+            } catch (error) {
+
+                console.error(error);
+
+                alert(
+                    "Failed to create user"
+                );
+
+            }
+
+        }
+    );
+document
+    .getElementById("userForm")
+    ?.addEventListener(
+        "submit",
+        async (e) => {
+
+            e.preventDefault();
+
+            try {
+
+                await Api.post(
+                    "/auth/register",
+                    {
+                        username:
+                            document.getElementById(
+                                "username"
+                            ).value,
+
+                        email:
+                            document.getElementById(
+                                "email"
+                            ).value,
+
+                        password:
+                            document.getElementById(
+                                "password"
+                            ).value,
+
+                        role:
+                            document.getElementById(
+                                "role"
+                            ).value
+                    }
+                );
+
+                alert(
+                    "User created successfully"
+                );
+
+                document
+                    .getElementById("userModal")
+                    ?.classList.remove(
+                        "show"
+                    );
+
+                document
+                    .getElementById("userForm")
+                    ?.reset();
+
+                loadUsers();
+
+            } catch (error) {
+
+                console.error(error);
+
+                alert(
+                    error?.response?.data?.detail ||
+                    "Failed to create user"
+                );
+
+            }
+
+        }
+    );
