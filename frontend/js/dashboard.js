@@ -9,14 +9,10 @@ Auth.requireAuth();
 ========================== */
 
 const userName =
-    document.getElementById(
-        "userName"
-    );
+    document.getElementById("userName");
 
 const roleBadge =
-    document.getElementById(
-        "roleBadge"
-    );
+    document.getElementById("roleBadge");
 
 const name =
     Storage.getName() || "User";
@@ -27,32 +23,23 @@ const role =
         "CUSTOMER"
     ).toUpperCase();
 
-console.log(
-    "ROLE =",
-    role
-);
+console.log("ROLE =", role);
 
 const roleNames = {
     ADMIN: "Admin",
     SUPER_ADMIN: "Super Admin",
-    WAREHOUSE_MANAGER:
-        "Warehouse Manager",
+    WAREHOUSE_MANAGER: "Warehouse Manager",
     PHARMACIST: "Pharmacist",
     CUSTOMER: "Customer"
 };
 
 if (userName) {
-
-    userName.textContent =
-        name;
-
+    userName.textContent = name;
 }
 
 if (roleBadge) {
-
     roleBadge.textContent =
         roleNames[role] || role;
-
 }
 
 /* ==========================
@@ -68,7 +55,6 @@ if (role !== "SUPER_ADMIN") {
     document
         .getElementById("userCard")
         ?.remove();
-
 }
 
 if (role === "WAREHOUSE_MANAGER") {
@@ -81,7 +67,6 @@ if (role === "WAREHOUSE_MANAGER") {
         .getElementById("medicineCount")
         ?.closest(".stat-card")
         ?.remove();
-
 }
 
 if (
@@ -97,7 +82,6 @@ if (
         .getElementById("warehouseCount")
         ?.closest(".stat-card")
         ?.remove();
-
 }
 
 /* ==========================
@@ -106,16 +90,13 @@ if (
 
 document
     .getElementById("logoutBtn")
-    ?.addEventListener(
-        "click",
-        (e) => {
+    ?.addEventListener("click", (e) => {
 
-            e.preventDefault();
+        e.preventDefault();
 
-            Auth.logout();
+        Auth.logout();
 
-        }
-    );
+    });
 
 /* ==========================
    CARD NAVIGATION
@@ -123,51 +104,39 @@ document
 
 document
     .getElementById("medicineCard")
-    ?.addEventListener(
-        "click",
-        () => {
+    ?.addEventListener("click", () => {
 
-            window.location.href =
-                "medicines.html";
+        window.location.href =
+            "medicines.html";
 
-        }
-    );
+    });
 
 document
     .getElementById("warehouseCard")
-    ?.addEventListener(
-        "click",
-        () => {
+    ?.addEventListener("click", () => {
 
-            window.location.href =
-                "warehouses.html";
+        window.location.href =
+            "warehouses.html";
 
-        }
-    );
+    });
 
 document
     .getElementById("userCard")
-    ?.addEventListener(
-        "click",
-        () => {
+    ?.addEventListener("click", () => {
 
-            window.location.href =
-                "users.html";
+        window.location.href =
+            "users.html";
 
-        }
-    );
+    });
 
 document
     .getElementById("ordersCard")
-    ?.addEventListener(
-        "click",
-        () => {
+    ?.addEventListener("click", () => {
 
-            window.location.href =
-                "orders.html";
+        window.location.href =
+            "orders.html";
 
-        }
-    );
+    });
 
 /* ==========================
    DASHBOARD COUNTS
@@ -177,17 +146,17 @@ async function loadDashboard() {
 
     /* Medicines */
 
-    if (
-        role !==
-        "WAREHOUSE_MANAGER"
-    ) {
+    if (role !== "WAREHOUSE_MANAGER") {
 
         try {
 
             const medicines =
-                await Api.get(
-                    "/medicines"
-                );
+                await Api.get("/medicines");
+
+            console.log(
+                "Medicines:",
+                medicines
+            );
 
             const medicineCount =
                 document.getElementById(
@@ -195,7 +164,10 @@ async function loadDashboard() {
                 );
 
             if (
-                medicineCount
+                medicineCount &&
+                Array.isArray(
+                    medicines
+                )
             ) {
 
                 medicineCount.textContent =
@@ -206,6 +178,7 @@ async function loadDashboard() {
         } catch (error) {
 
             console.error(
+                "Medicines Error:",
                 error
             );
 
@@ -216,10 +189,8 @@ async function loadDashboard() {
     /* Warehouses */
 
     if (
-        role !==
-            "CUSTOMER" &&
-        role !==
-            "PHARMACIST"
+        role !== "CUSTOMER" &&
+        role !== "PHARMACIST"
     ) {
 
         try {
@@ -229,13 +200,21 @@ async function loadDashboard() {
                     "/warehouse-stock"
                 );
 
+            console.log(
+                "Warehouses:",
+                warehouses
+            );
+
             const warehouseCount =
                 document.getElementById(
                     "warehouseCount"
                 );
 
             if (
-                warehouseCount
+                warehouseCount &&
+                Array.isArray(
+                    warehouses
+                )
             ) {
 
                 warehouseCount.textContent =
@@ -246,6 +225,7 @@ async function loadDashboard() {
         } catch (error) {
 
             console.error(
+                "Warehouse Error:",
                 error
             );
 
@@ -258,27 +238,135 @@ async function loadDashboard() {
     try {
 
         const orders =
-            await Api.get(
-                "/orders"
-            );
+            await Api.get("/orders");
 
-        const orderCount =
-            document.getElementById(
-                "orderCount"
-            );
+        console.log(
+            "Orders:",
+            orders
+        );
 
         if (
-            orderCount
+            Array.isArray(
+                orders
+            )
         ) {
 
-            orderCount.textContent =
-                orders.length;
+            const customerOrders =
+                orders.filter(
+                    order =>
+                        order.order_type ===
+                        "CUSTOMER"
+                );
+
+            const bulkOrders =
+                orders.filter(
+                    order =>
+                        order.order_type ===
+                        "BULK"
+                );
+
+            const customerOrderCount =
+                document.getElementById(
+                    "customerOrderCount"
+                );
+
+            const bulkOrderCount =
+                document.getElementById(
+                    "bulkOrderCount"
+                );
+
+            const totalOrderCount =
+                document.getElementById(
+                    "orderCount"
+                );
+
+            if (
+                customerOrderCount
+            ) {
+
+                customerOrderCount.textContent =
+                    customerOrders.length;
+
+            }
+
+            if (
+                bulkOrderCount
+            ) {
+
+                bulkOrderCount.textContent =
+                    bulkOrders.length;
+
+            }
+
+            if (
+                totalOrderCount
+            ) {
+
+                totalOrderCount.textContent =
+                    orders.length;
+
+            }
+
+        }
+
+        /* Customer */
+
+        if (
+            role === "CUSTOMER"
+        ) {
+
+            document
+                .getElementById(
+                    "bulkOrderStats"
+                )
+                ?.remove();
+
+            document
+                .getElementById(
+                    "totalOrderStats"
+                )
+                ?.remove();
+
+        }
+
+        /* Pharmacist */
+
+        if (
+            role === "PHARMACIST"
+        ) {
+
+            document
+                .getElementById(
+                    "totalOrderStats"
+                )
+                ?.remove();
+
+        }
+
+        /* Warehouse Manager */
+
+        if (
+            role === "WAREHOUSE_MANAGER"
+        ) {
+
+            document
+                .getElementById(
+                    "customerOrderStats"
+                )
+                ?.remove();
+
+            document
+                .getElementById(
+                    "totalOrderStats"
+                )
+                ?.remove();
 
         }
 
     } catch (error) {
 
         console.error(
+            "Orders Error:",
             error
         );
 
@@ -287,8 +375,7 @@ async function loadDashboard() {
     /* Users */
 
     if (
-        role ===
-        "SUPER_ADMIN"
+        role === "SUPER_ADMIN"
     ) {
 
         try {
@@ -298,13 +385,19 @@ async function loadDashboard() {
                     "/users"
                 );
 
+            console.log(
+                "Users:",
+                users
+            );
+
             const userCount =
                 document.getElementById(
                     "userCount"
                 );
 
             if (
-                userCount
+                userCount &&
+                Array.isArray(users)
             ) {
 
                 userCount.textContent =
@@ -315,6 +408,7 @@ async function loadDashboard() {
         } catch (error) {
 
             console.error(
+                "Users Error:",
                 error
             );
 
@@ -325,4 +419,3 @@ async function loadDashboard() {
 }
 
 loadDashboard();
-``

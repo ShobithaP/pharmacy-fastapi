@@ -5,11 +5,10 @@
 
     <meta charset="UTF-8">
 
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
 
-    <title>Users Management</title>
+    <title>Users Management | Pharmacy Inventory Management System</title>
 
     <link rel="stylesheet" href="css/dashboard.css">
     <link rel="stylesheet" href="css/users.css">
@@ -18,189 +17,219 @@
 
 <body>
 
-<main class="content">
+    <!-- Hero Section -->
 
-    <header class="page-header">
+    <section class="dashboard-hero">
 
-        <div>
+        <div class="hero-content">
 
             <h1>Users Management</h1>
 
             <p>
-                Manage system users and staff accounts.
+                Manage administrators, pharmacists, warehouse managers,
+                and customer accounts across the pharmacy system.
             </p>
 
         </div>
 
-        <div style="display:flex; gap:10px;">
+    </section>
+
+    <main class="dashboard-container">
+
+        <!-- Actions -->
+
+        <div class="header-actions">
 
             <button
                 id="addUserBtn"
                 type="button"
                 class="primary-btn">
 
-                + Add User
+                Add User
 
             </button>
 
         </div>
 
-    </header>
+        <!-- Search -->
 
-    <section class="toolbar">
+        <section class="search-card">
 
-        <input
-            type="text"
-            id="searchUser"
-            placeholder="Search users...">
+            <input
+                type="text"
+                id="searchUser"
+                placeholder="Search users by name, email, or role">
 
-    </section>
+        </section>
 
-    <section class="table-card">
+        <!-- Users Table -->
 
-        <table>
+        <section class="table-card">
 
-            <thead>
+            <table>
 
-                <tr>
+                <thead>
 
-                    <th>ID</th>
-                    <th>Username</th>
-                    <th>Email</th>
-                    <th>Role</th>
-                    <th>Actions</th>
+                    <tr>
 
-                </tr>
+                        <th>ID</th>
+                        <th>Username</th>
+                        <th>Email</th>
+                        <th>Role</th>
+                        <th>Actions</th>
 
-            </thead>
+                    </tr>
 
-            <tbody id="userTable">
+                </thead>
 
-                <tr>
+                <tbody id="userTable">
 
-                    <td colspan="5">
-                        Loading users...
-                    </td>
+                    <tr>
 
-                </tr>
+                        <td
+                            colspan="5"
+                            class="empty-state">
 
-            </tbody>
+                            Loading users...
 
-        </table>
+                        </td>
 
-    </section>
+                    </tr>
 
-</main>
+                </tbody>
 
-<div
-    id="userModal"
-    class="modal">
+            </table>
 
-    <div class="modal-content">
+        </section>
 
-        <h2 id="modalTitle">
+    </main>
 
-            Add User
+    <!-- User Modal -->
 
-        </h2>
+    <div
+        id="userModal"
+        class="modal">
 
-        <form id="userForm">
+        <div class="modal-content">
 
-            <div class="form-group">
+            <div class="modal-header">
 
-                <label>Username</label>
+                <h2 id="modalTitle">
+                    Add User
+                </h2>
 
-                <input
-                    type="text"
-                    id="username"
-                    required>
-
-            </div>
-
-            <div class="form-group">
-
-                <label>Email</label>
-
-                <input
-                    type="email"
-                    id="email"
-                    required>
+                <p>
+                    Enter user details and assign an appropriate role.
+                </p>
 
             </div>
 
-            <div class="form-group">
+            <form id="userForm">
 
-                <label>Password</label>
+                <div class="form-group">
 
-                <input
-                    type="password"
-                    id="password"
-                    required>
+                    <label for="username">
+                        Username
+                    </label>
 
-            </div>
+                    <input
+                        type="text"
+                        id="username"
+                        placeholder="Enter username"
+                        required>
 
-            <div class="form-group">
+                </div>
 
-                <label>Role</label>
+                <div class="form-group">
 
-                <select
-                    id="role"
-                    required>
+                    <label for="email">
+                        Email Address
+                    </label>
 
-                    <option value="">
-                        Select Role
-                    </option>
+                    <input
+                        type="email"
+                        id="email"
+                        placeholder="Enter email address"
+                        required>
 
-                    <option value="ADMIN">
-                        Admin
-                    </option>
+                </div>
 
-                    <option value="PHARMACIST">
-                        Pharmacist
-                    </option>
+                <div class="form-group">
 
-                    <option value="WAREHOUSE_MANAGER">
-                        Warehouse Manager
-                    </option>
+                    <label for="password">
+                        Password
+                    </label>
 
-                    <option value="CUSTOMER">
-                        Customer
-                    </option>
+                    <input
+                        type="password"
+                        id="password"
+                        placeholder="Enter password"
+                        required>
 
-                </select>
+                </div>
 
-            </div>
+                <div class="form-group">
 
-            <div class="modal-buttons">
+                    <label for="role">
+                        Role
+                    </label>
 
-                <button
-                    type="submit"
-                    class="primary-btn">
+                    <select
+                        id="role"
+                        required>
 
-                    Save
+                        <option value="">Select Role</option>
 
-                </button>
+                        <option value="ADMIN">
+                            Admin
+                        </option>
 
-                <button
-                    type="button"
-                    id="cancelBtn"
-                    class="secondary-btn">
+                        <option value="PHARMACIST">
+                            Pharmacist
+                        </option>
 
-                    Cancel
+                        <option value="WAREHOUSE_MANAGER">
+                            Warehouse Manager
+                        </option>
 
-                </button>
+                        <option value="CUSTOMER">
+                            Customer
+                        </option>
 
-            </div>
+                    </select>
 
-        </form>
+                </div>
+
+                <div class="modal-buttons">
+
+                    <button
+                        type="submit"
+                        class="primary-btn">
+
+                        Save
+
+                    </button>
+
+                    <button
+                        type="button"
+                        id="cancelBtn"
+                        class="secondary-btn">
+
+                        Cancel
+
+                    </button>
+
+                </div>
+
+            </form>
+
+        </div>
 
     </div>
 
-</div>
-
-<script
-    type="module"
-    src="js/users.js"></script>
+    <script
+        type="module"
+        src="js/users.js"></script>
 
 </body>
 

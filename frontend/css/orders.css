@@ -1,0 +1,221 @@
+/* =================================
+   ORDERS PAGE
+================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f4f7fc;
+    color: #333;
+}
+
+/* =================================
+   HERO SECTION
+================================= */
+
+.dashboard-hero {
+    background: linear-gradient(135deg, #0077b6, #0096c7);
+    color: white;
+    text-align: center;
+    padding: 80px 20px;
+}
+
+.hero-content {
+    max-width: 900px;
+    margin: auto;
+}
+
+.hero-content h1 {
+    font-size: 3rem;
+    margin-bottom: 15px;
+}
+
+.hero-content p {
+    font-size: 1.1rem;
+    line-height: 1.7;
+}
+
+/* =================================
+   CONTAINER
+================================= */
+
+.dashboard-container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 50px 20px;
+}
+
+/* =================================
+   ORDER FORMS
+================================= */
+
+.order-card {
+    background: white;
+    border-radius: 12px;
+    padding: 25px;
+    margin-bottom: 25px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, .08);
+}
+
+.order-card h3 {
+    color: #0077b6;
+    margin-bottom: 20px;
+}
+
+/* =================================
+   FORM ROW
+================================= */
+
+.form-row {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.form-row select,
+.form-row input {
+    flex: 1;
+    min-width: 220px;
+    padding: 12px;
+    border: 1px solid #dce3ea;
+    border-radius: 8px;
+    font-size: 14px;
+}
+
+.form-row select:focus,
+.form-row input:focus {
+    outline: none;
+    border-color: #0077b6;
+    box-shadow: 0 0 0 3px rgba(0, 119, 182, .15);
+}
+
+/* =================================
+   BUTTONS
+================================= */
+
+.primary-btn {
+    background: #0077b6;
+    color: white;
+    border: none;
+    padding: 12px 22px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: .3s ease;
+}
+
+.primary-btn:hover {
+    background: #005f92;
+}
+
+/* =================================
+   TABLE CARD
+================================= */
+
+.table-card {
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    margin-bottom: 25px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, .08);
+}
+
+.table-card h3 {
+    padding: 20px;
+    color: #0077b6;
+}
+
+/* =================================
+   TABLE
+================================= */
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+thead {
+    background: #0077b6;
+}
+
+th {
+    color: white;
+    padding: 14px;
+    text-align: left;
+    font-weight: 600;
+}
+
+td {
+    padding: 14px;
+    border-bottom: 1px solid #eef2f7;
+}
+
+tbody tr:hover {
+    background: #f8fafc;
+}
+
+.empty-state {
+    text-align: center;
+    color: #666;
+    padding: 30px;
+}
+
+/* =================================
+   ACTION BUTTONS FROM JS
+================================= */
+
+.approveBtn,
+.approveBulkBtn {
+    background: #16a34a;
+    color: white;
+    border: none;
+    padding: 8px 14px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.approveBtn:hover,
+.approveBulkBtn:hover {
+    background: #15803d;
+}
+
+.deleteOrderBtn {
+    background: #dc2626;
+    color: white;
+    border: none;
+    padding: 8px 14px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.deleteOrderBtn:hover {
+    background: #b91c1c;
+}
+
+/* =================================
+   RESPONSIVE
+================================= */
+
+@media (max-width: 768px) {
+
+    .hero-content h1 {
+        font-size: 2.2rem;
+    }
+
+    .form-row {
+        flex-direction: column;
+    }
+
+    .table-card {
+        overflow-x: auto;
+    }
+
+    table {
+        min-width: 700px;
+    }
+}

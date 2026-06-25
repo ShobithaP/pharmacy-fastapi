@@ -1,390 +1,228 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Warehouse Stock</title>
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Warehouse Management | Pharmacy Inventory Management System</title>
 
     <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="css/warehouse.css">
 
-    <style>
-        body{
-            background:#f4f6f9;
-            font-family:Arial,sans-serif;
-            margin:0;
-        }
-
-        .container{
-            width:90%;
-            margin:40px auto;
-        }
-
-        h1{
-            color:#2c3e50;
-            margin-bottom:20px;
-        }
-
-        .search-bar{
-            margin-bottom:20px;
-        }
-
-        .search-bar input{
-            width:100%;
-            padding:12px;
-            border:1px solid #d1d5db;
-            border-radius:6px;
-        }
-
-        table{
-            width:100%;
-            border-collapse:collapse;
-            background:white;
-            box-shadow:0 3px 10px rgba(0,0,0,.1);
-        }
-
-        th,td{
-            padding:12px;
-            border-bottom:1px solid #ddd;
-            text-align:left;
-        }
-
-        th{
-            background:#2c3e50;
-            color:white;
-        }
-
-        button{
-            padding:8px 14px;
-            border:none;
-            border-radius:5px;
-            cursor:pointer;
-            margin-right:8px;
-        }
-
-        .add{
-            background:#27ae60;
-            color:white;
-            margin-bottom:20px;
-        }
-
-        .delete{
-            background:white;
-            color:black;
-            border:1px solid #d1d5db;
-        }
-
-        .back{
-            background:#34495e;
-            color:white;
-            margin-bottom:20px;
-        }
-
-        #modal{
-            display:none;
-            position:fixed;
-            left:0;
-            top:0;
-            width:100%;
-            height:100%;
-            background:rgba(0,0,0,.4);
-        }
-
-        .modal-content{
-            background:white;
-            width:400px;
-            margin:80px auto;
-            padding:20px;
-            border-radius:8px;
-        }
-
-        .modal-content input{
-            width:100%;
-            padding:10px;
-            margin:8px 0;
-        }
-    </style>
 </head>
 
 <body>
 
-<div class="container">
+    <!-- Hero Section -->
 
-    <button
-        class="back"
-rehouse Stock</h1>
+    <section class="dashboard-hero">
 
-    <button
-        class="add"
-        onclick="openAddModal()">
-        Add Warehouse Stock
-    </button>
+        <div class="hero-content">
 
-    <button
-        id="uploadWarehouseBtn"
-        class="add">
-        Upload CSV
-    </button>
+            <h1>Warehouse Management</h1>
 
-    <button
-        id="downloadWarehouseBtn"
-        class="add">
-        Download CSV
-    </button>
+            <p>
+                Manage warehouse inventory, stock availability,
+                storage locations, and medicine distribution.
+            </p>
 
-    <input
-        type="file"
-        id="warehouseCsvFile"
-        accept=".csv"
-        style="display:none;">
+        </div>
 
-    <div class="search-bar">
+    </section>
+
+    <main class="dashboard-container">
+
+        <!-- Action Buttons -->
+
+        <div class="header-actions">
+
+            <button
+                class="primary-btn"
+                onclick="openAddModal()">
+
+                Add Warehouse Stock
+
+            </button>
+
+            <button
+                id="uploadWarehouseBtn"
+                class="primary-btn">
+
+                Upload CSV
+
+            </button>
+
+            <button
+                id="downloadWarehouseBtn"
+                class="primary-btn">
+
+                Download CSV
+
+            </button>
+
+        </div>
 
         <input
-            type="text"
-            id="warehouseSearch"
-            placeholder="Search anything..."
-        >
+            type="file"
+            id="warehouseCsvFile"
+            accept=".csv"
+            style="display:none;">
+
+        <!-- Search -->
+
+        <section class="search-card">
+
+            <input
+                type="text"
+                id="warehouseSearch"
+                placeholder="Search warehouse records...">
+
+        </section>
+
+        <!-- Table -->
+
+        <section class="table-card">
+
+            <table>
+
+                <thead>
+
+                    <tr>
+
+                        <th>ID</th>
+                        <th>Medicine ID</th>
+                        <th>Warehouse</th>
+                        <th>Location</th>
+                        <th>Stock Quantity</th>
+                        <th>Actions</th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody id="warehouseTable">
+
+                    <tr>
+
+                        <td
+                            colspan="6"
+                            class="empty-state">
+
+                            Loading warehouse records...
+
+                        </td>
+
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </section>
+
+    </main>
+
+    <!-- Modal -->
+
+    <div
+        id="modal"
+        class="modal">
+
+        <div class="modal-content">
+
+            <div class="modal-header">
+
+                <h2 id="title">
+                    Add Warehouse Stock
+                </h2>
+
+                <p>
+                    Enter warehouse inventory information.
+                </p>
+
+            </div>
+
+            <div class="form-group">
+
+                <label for="medicine_id">
+                    Medicine ID
+                </label>
+
+                <input
+                    id="medicine_id"
+                    placeholder="Enter medicine ID">
+
+            </div>
+
+            <div class="form-group">
+
+                <label for="warehouse_name">
+                    Warehouse Name
+                </label>
+
+                <input
+                    id="warehouse_name"
+                    placeholder="Enter warehouse name">
+
+            </div>
+
+            <div class="form-group">
+
+                <label for="location">
+                    Location
+                </label>
+
+                <input
+                    id="location"
+                    placeholder="Enter location">
+
+            </div>
+
+            <div class="form-group">
+
+                <label for="stock_quantity">
+                    Stock Quantity
+                </label>
+
+                <input
+                    id="stock_quantity"
+                    placeholder="Enter stock quantity">
+
+            </div>
+
+            <div class="modal-buttons">
+
+                <button
+                    onclick="saveWarehouse()"
+                    class="primary-btn">
+
+                    Save
+
+                </button>
+
+                <button
+                    onclick="closeModal()"
+                    class="secondary-btn">
+
+                    Cancel
+
+                </button>
+
+            </div>
+
+        </div>
 
     </div>
 
-    <table>
-
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>Medicine ID</th>
-                <th>Warehouse</th>
-                <th>Location</th>
-                <th>Stock</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-
-        <tbody id="warehouseTable"></tbody>
-
-    </table>
-
-</div>
-
-<div id="modal">
-
-    <div class="modal-content">
-
-        <h2 id="title">Add Warehouse</h2>
-
-        <input id="medicine_id" placeholder="Medicine ID">
-        <input id="warehouse_name" placeholder="Warehouse Name">
-        <input id="location" placeholder="Location">
-        <input id="stock_quantity" placeholder="Stock Quantity">
-
-        <button onclick="saveWarehouse()">Save</button>
-        <button onclick="closeModal()">Cancel</button>
-
-    </div>
-
-</div>
-
-<script type="module">
-
-import ApiService from "./js/api.js";
-
-let warehouses = [];
-
-const table = document.getElementById("warehouseTable");
-const searchInput = document.getElementById("warehouseSearch");
-
-async function loadData(){
-
-    try{
-
-        warehouses = await ApiService.get("/warehouse");
-
-        renderTable(warehouses);
-
-    }catch(error){
-
-        console.error(error);
-    }
-}
-
-function renderTable(data){
-
-    table.innerHTML = "";
-
-    if(!data.length){
-
-        table.innerHTML = `
-            <tr>
-                <td colspan="6">No records found.</td>
-            </tr>
-        `;
-
-        return;
-    }
-
-    data.forEach(w => {
-
-        table.innerHTML += `
-            <tr>
-
-                <td>${w.id}</td>
-
-                <td>${w.medicine_id}</td>
-
-                <td>${w.warehouse_name}</td>
-
-                <td>${w.location}</td>
-
-                <td>${w.stock_quantity}</td>
-
-                <td>
-                    <button
-                        class="delete"
-                        onclick="removeWarehouse(${w.id})">
-                        Delete
-                    </button>
-                </td>
-
-            </tr>
-        `;
-    });
-}
-
-searchInput.addEventListener("input", () => {
-
-    const keyword =
-        searchInput.value.trim().toLowerCase();
-
-    if(!keyword){
-
-        renderTable(warehouses);
-        return;
-    }
-
-    const filtered = warehouses.filter(w =>
-
-        Object.values(w)
-            .join(" ")
-            .toLowerCase()
-            .includes(keyword)
-
-    );
-
-    renderTable(filtered);
-
-});
-
-window.openAddModal = () => {
-
-    document.getElementById("modal").style.display = "block";
-
-};
-
-window.closeModal = () => {
-
-    document.getElementById("modal").style.display = "none";
-
-};
-
-window.saveWarehouse = async () => {
-
-    const data = {
-
-        medicine_id:Number(document.getElementById("medicine_id").value),
-
-        warehouse_name:document.getElementById("warehouse_name").value,
-
-        location:document.getElementById("location").value,
-
-        stock_quantity:Number(document.getElementById("stock_quantity").value)
-
-    };
-
-    await ApiService.post("/warehouse", data);
-
-    closeModal();
-
-    loadData();
-};
-
-window.removeWarehouse = async(id) => {
-
-    if(confirm("Delete warehouse stock?")){
-
-        await ApiService.post(
-            `/warehouse/delete/${id}`,
-            {}
-        );
-
-        loadData();
-
-    }
-
-};
-
-document
-    .getElementById("uploadWarehouseBtn")
-    .addEventListener("click", () => {
-
-        document
-            .getElementById("warehouseCsvFile")
-            .click();
-
-    });
-
-document
-    .getElementById("warehouseCsvFile")
-    .addEventListener("change", async (e) => {
-
-        try{
-
-            const formData = new FormData();
-
-            formData.append(
-                "file",
-                e.target.files[0]
-            );
-
-            await fetch(
-                "http://127.0.0.1:8000/warehouse/upload",
-                {
-                    method:"POST",
-                    headers:{
-                        Authorization:
-                        `Bearer ${localStorage.getItem("token")}`
-                    },
-                    body:formData
-                }
-            );
-
-            alert("Warehouse CSV uploaded successfully");
-
-            loadData();
-
-        }catch(error){
-
-            console.error(error);
-
-            alert("Upload failed");
-
-        }
-
-    });
-
-document
-    .getElementById("downloadWarehouseBtn")
-    .addEventListener("click", () => {
-
-        window.open(
-            "http://127.0.0.1:8000/warehouse/download",
-            "_blank"
-        );
-
-    });
-
-loadData();
-
+    <script
+    type="module"
+    src="js/warehouse.js">
 </script>
 
 </body>
+
 </html>

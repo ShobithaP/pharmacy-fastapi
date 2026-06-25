@@ -220,20 +220,20 @@ ${
     role === "SUPER_ADMIN"
         ? `
             <button
-                class="deleteOrderBtn"
-                data-id="${order.id}"
-                style="
-                    background:#2563eb;
-                    color:white;
-                    border:none;
-                    border-radius:8px;
-                    padding:8px 16px;
-                    cursor:pointer;
-                    margin-left:5px;
-                "
-            >
-                Delete
-            </button>
+    class="deleteOrderBtn"
+    data-id="${order.id}"
+    style="
+        background:#eb2543;
+        color:white;
+        border:none;
+        border-radius:8px;
+        padding:8px 16px;
+        cursor:pointer;
+        margin-left:5px;
+    "
+>
+    Delete
+</button>
           `
         : ""
 }
@@ -292,7 +292,7 @@ ${
                 class="deleteOrderBtn"
                 data-id="${order.id}"
                 style="
-                    background:#2563eb;
+                    background:#eb2543;
                     color:white;
                     border:none;
                     border-radius:8px;
@@ -544,7 +544,31 @@ document.addEventListener(
 loadMedicines();
 loadOrders();
 
-window.addEventListener("load", () => {
+window.addEventListener("DOMContentLoaded", () => {
+
+    if (role === "PHARMACIST") {
+
+        document
+            .getElementById("customerOrderSection")
+            ?.remove();
+
+    }
+
+    if (role === "WAREHOUSE_MANAGER") {
+
+        document
+            .getElementById("customerOrderSection")
+            ?.remove();
+
+        document
+            .getElementById("bulkOrderSection")
+            ?.remove();
+
+        document
+            .getElementById("customerOrdersSection")
+            ?.remove();
+
+    }
 
     if (role === "CUSTOMER") {
 

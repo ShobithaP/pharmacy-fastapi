@@ -4,9 +4,11 @@
 <head>
 
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Login</title>
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Login | Pharmacy Inventory Management System</title>
 
     <link rel="stylesheet" href="css/common.css">
     <link rel="stylesheet" href="css/auth.css">
@@ -15,17 +17,46 @@
 
 <body>
 
-    <div class="auth-container">
+    <!-- Hero Section -->
+
+    <section class="auth-hero">
+
+        <div class="hero-content">
+
+            <h1>Pharmacy Inventory Management System</h1>
+
+            <p>
+                Sign in to access medicines, inventory, warehouses,
+                orders, users, and pharmacy management tools.
+            </p>
+
+        </div>
+
+    </section>
+
+    <!-- Login Form -->
+
+    <section class="auth-section">
 
         <div class="auth-card">
 
-            <h1>Welcome Back</h1>
+            <div class="auth-header">
+
+                <h2>Welcome Back</h2>
+
+                <p>
+                    Login to continue managing pharmacy operations.
+                </p>
+
+            </div>
 
             <form id="loginForm">
 
                 <div class="form-group">
 
-                    <label>Email</label>
+                    <label for="email">
+                        Email Address
+                    </label>
 
                     <input
                         type="email"
@@ -37,7 +68,9 @@
 
                 <div class="form-group">
 
-                    <label>Password</label>
+                    <label for="password">
+                        Password
+                    </label>
 
                     <input
                         type="password"
@@ -69,10 +102,11 @@
 
         </div>
 
-    </div>
+    </section>
 
     <script type="module" src="js/login.js"></script>
 
 </body>
 
 </html>
+``

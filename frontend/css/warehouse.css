@@ -1,5 +1,5 @@
 /* =================================
-   MEDICINES PAGE
+   WAREHOUSE PAGE
 ================================= */
 
 * {
@@ -51,7 +51,7 @@ body {
 }
 
 /* =================================
-   ACTION BUTTONS
+   ACTION BAR
 ================================= */
 
 .header-actions {
@@ -69,30 +69,13 @@ body {
     border-radius: 8px;
     cursor: pointer;
     font-weight: 600;
-    transition: 0.3s;
+    transition: .3s ease;
 }
 
 .primary-btn:hover {
     background: #005f92;
 }
-/* Delete Button */
 
-.action-btn,
-.deleteBtn {
-    background: #dc2626;
-    color: white;
-    border: none;
-    padding: 8px 14px;
-    border-radius: 6px;
-    cursor: pointer;
-    font-weight: 600;
-    transition: 0.3s ease;
-}
-
-.action-btn:hover,
-.deleteBtn:hover {
-    background: #b91c1c;
-}
 .secondary-btn {
     background: #f1f5f9;
     color: #333;
@@ -105,7 +88,19 @@ body {
 .secondary-btn:hover {
     background: #e2e8f0;
 }
+.deleteWarehouseBtn {
+    background: #dc2626;
+    color: white;
+    border: none;
+    padding: 8px 14px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+}
 
+.deleteWarehouseBtn:hover {
+    background: #b91c1c;
+}
 /* =================================
    SEARCH CARD
 ================================= */
@@ -114,8 +109,8 @@ body {
     background: white;
     padding: 20px;
     border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0,0,0,.08);
     margin-bottom: 25px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, .08);
 }
 
 .search-card input {
@@ -133,14 +128,14 @@ body {
 }
 
 /* =================================
-   TABLE
+   TABLE CARD
 ================================= */
 
 .table-card {
     background: white;
     border-radius: 12px;
     overflow: hidden;
-    box-shadow: 0 4px 12px rgba(0,0,0,.08);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, .08);
 }
 
 table {
@@ -154,8 +149,8 @@ thead {
 
 th {
     color: white;
-    padding: 16px;
     text-align: left;
+    padding: 16px;
     font-weight: 600;
 }
 
@@ -170,8 +165,8 @@ tbody tr:hover {
 
 .empty-state {
     text-align: center;
-    padding: 30px;
     color: #666;
+    padding: 30px;
 }
 
 /* =================================
@@ -182,15 +177,15 @@ tbody tr:hover {
     display: none;
     position: fixed;
     inset: 0;
-    background: rgba(0,0,0,.5);
+    background: rgba(0, 0, 0, .5);
     z-index: 1000;
 }
 
 .modal-content {
-    background: white;
     width: 100%;
     max-width: 500px;
     margin: 80px auto;
+    background: white;
     padding: 30px;
     border-radius: 12px;
 }
@@ -201,11 +196,12 @@ tbody tr:hover {
 
 .modal-header h2 {
     color: #0077b6;
+    margin-bottom: 8px;
 }
 
-/* =================================
-   FORM
-================================= */
+.modal-header p {
+    color: #666;
+}
 
 .form-group {
     margin-bottom: 16px;
@@ -246,12 +242,21 @@ tbody tr:hover {
         font-size: 2.2rem;
     }
 
+    .header-actions {
+        flex-direction: column;
+    }
+
     .table-card {
         overflow-x: auto;
     }
 
     table {
-        min-width: 700px;
+        min-width: 750px;
+    }
+
+    .modal-content {
+        width: 95%;
+        margin: 40px auto;
     }
 
     .modal-buttons {

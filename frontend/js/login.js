@@ -54,3 +54,9 @@ form.addEventListener("submit", async (e) => {
     }
 
 });
+localStorage.setItem("token", response.access_token);
+
+localStorage.setItem(
+    "role",
+    response.user.role
+);

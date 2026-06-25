@@ -1,152 +1,284 @@
-body{
-    margin:0;
-    padding:30px;
-    background:#f4f6f9;
-    font-family:Arial,sans-serif;
+/* =================================
+   USERS PAGE
+================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-.content{
-    width:100%;
-    max-width:1400px;
-    margin:auto;
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f4f7fc;
+    color: #333;
 }
 
-.page-header{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    margin-bottom:20px;
+/* =================================
+   HERO SECTION
+================================= */
+
+.dashboard-hero {
+    background: linear-gradient(135deg, #0077b6, #0096c7);
+    color: white;
+    text-align: center;
+    padding: 80px 20px;
 }
 
-.page-header h1{
-    margin:0;
-    color:#1e293b;
+.hero-content {
+    max-width: 900px;
+    margin: auto;
 }
 
-.page-header p{
-    color:#64748b;
+.hero-content h1 {
+    font-size: 3rem;
+    margin-bottom: 15px;
 }
 
-.primary-btn{
-    background:#2563eb;
-    color:white;
-    border:none;
-    padding:12px 18px;
-    border-radius:8px;
-    cursor:pointer;
+.hero-content p {
+    font-size: 1.1rem;
+    line-height: 1.7;
 }
 
-.secondary-btn{
-    background:#e2e8f0;
-    border:none;
-    padding:12px 18px;
-    border-radius:8px;
-    cursor:pointer;
+/* =================================
+   CONTAINER
+================================= */
+
+.dashboard-container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 50px 20px;
 }
 
-.toolbar{
-    margin-bottom:20px;
+/* =================================
+   ACTION BAR
+================================= */
+
+.header-actions {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 25px;
 }
 
-.toolbar input{
-    width:100%;
-    max-width:400px;
-    padding:12px;
-    border:1px solid #d1d5db;
-    border-radius:8px;
-}
-
-.table-card{
-    background:white;
-    border-radius:12px;
-    box-shadow:0 4px 12px rgba(0,0,0,.08);
-    padding:20px;
-}
-
-table{
-    width:100%;
-    border-collapse:collapse;
-}
-
-th{
-    background:#2563eb;
-    color:white;
-    padding:12px;
-    text-align:left;
-}
-
-td{
-    padding:12px;
-    border-bottom:1px solid #e5e7eb;
-}
-
-.action-btn{
-    background:#ef4444;
-    color:white;
-    border:none;
-    padding:8px 12px;
-    border-radius:6px;
-    cursor:pointer;
-}
-
-.modal{
-    display:none;
-    position:fixed;
-    inset:0;
-    background:rgba(0,0,0,.5);
-}
-
-.modal.show{
-    display:flex;
-    align-items:center;
-    justify-content:center;
-}
-
-.modal-content{
-    background:white;
-    width:450px;
-    padding:25px;
-    border-radius:12px;
-}
-
-.form-group{
-    margin-bottom:15px;
-}
-
-.form-group label{
-    display:block;
-    margin-bottom:5px;
-}
-
-.form-group input,
-.form-group select{
-    width:100%;
-    padding:10px;
-    border:1px solid #d1d5db;
-    border-radius:6px;
-}
-
-.modal-buttons{
-    display:flex;
-    gap:10px;
-}
-.approveBtn {
-    background: #2563eb;
-    color: #fff;
+.primary-btn {
+    background: #0077b6;
+    color: white;
     border: none;
+    padding: 12px 22px;
     border-radius: 8px;
-    padding: 8px 16px;
     cursor: pointer;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+.primary-btn:hover {
+    background: #005f92;
+}
+
+.secondary-btn {
+    background: #f1f5f9;
+    color: #333;
+    border: 1px solid #dce3ea;
+    padding: 12px 22px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.secondary-btn:hover {
+    background: #e2e8f0;
+}
+
+/* =================================
+   SEARCH CARD
+================================= */
+
+.search-card {
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+    margin-bottom: 25px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, .08);
+}
+
+.search-card input {
+    width: 100%;
+    padding: 14px;
+    border: 1px solid #dce3ea;
+    border-radius: 8px;
+    font-size: 14px;
+}
+
+.search-card input:focus {
+    outline: none;
+    border-color: #0077b6;
+    box-shadow: 0 0 0 3px rgba(0, 119, 182, .15);
+}
+
+/* =================================
+   TABLE CARD
+================================= */
+
+.table-card {
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, .08);
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+thead {
+    background: #0077b6;
+}
+
+th {
+    color: white;
+    text-align: left;
+    padding: 16px;
     font-weight: 600;
 }
 
-.approveBtn:hover {
-    background: #1d4ed8;
+td {
+    padding: 16px;
+    border-bottom: 1px solid #eef2f7;
 }
+
+tbody tr:hover {
+    background: #f8fafc;
+}
+
+.empty-state {
+    text-align: center;
+    color: #666;
+    padding: 30px;
+}
+
+/* =================================
+   ACTION BUTTONS FROM JS
+================================= */
+
+.action-btn {
+    background: #dc2626;
+    color: white;
+    border: none;
+    padding: 8px 14px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.action-btn:hover {
+    background: #b91c1c;
+}
+
+.approveBtn {
+    background: #16a34a;
+    color: white;
+    border: none;
+    padding: 8px 14px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.approveBtn:hover {
+    background: #15803d;
+}
+
+/* =================================
+   MODAL
+================================= */
+
 .modal {
     display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, .5);
+    z-index: 1000;
 }
 
 .modal.show {
     display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background: white;
+    width: 100%;
+    max-width: 500px;
+    border-radius: 12px;
+    padding: 30px;
+}
+
+.modal-header {
+    margin-bottom: 20px;
+}
+
+.modal-header h2 {
+    color: #0077b6;
+    margin-bottom: 8px;
+}
+
+.modal-header p {
+    color: #666;
+}
+
+/* =================================
+   FORM
+================================= */
+
+.form-group {
+    margin-bottom: 16px;
+}
+
+.form-group label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+.form-group input,
+.form-group select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #dce3ea;
+    border-radius: 8px;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+    outline: none;
+    border-color: #0077b6;
+    box-shadow: 0 0 0 3px rgba(0,119,182,.15);
+}
+
+.modal-buttons {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+/* =================================
+   RESPONSIVE
+================================= */
+
+@media (max-width: 768px) {
+
+    .hero-content h1 {
+        font-size: 2.2rem;
+    }
+
+    .table-card {
+        overflow-x: auto;
+    }
+
+    table {
+        min-width: 700px;
+    }
+
+    .modal-buttons {
+        flex-direction: column;
+    }
 }

@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Search Medicines | Pharmacy Inventory Management System</title>
+
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="css/search.css">
+
+</head>
+
+<body>
+
+    <div class="layout">
+
+        <!-- Sidebar -->
+
+        <aside class="sidebar">
+
+            <div class="logo">
+                <h2>Pharmacy IMS</h2>
+            </div>
+
+            <nav>
+
+                <ul class="menu">
+
+                    <li>
+                        <a href="dashboard.html">
+                            Dashboard
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="medicines.html">
+                            Medicines
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="warehouse.html">
+                            Warehouses
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="users.html">
+                            Users
+                        </a>
+                    </li>
+
+                    <li class="active">
+                        <a href="search.html">
+                            Search
+                        </a>
+                    </li>
+
+                </ul>
+
+            </nav>
+
+            <button
+                id="logoutBtn"
+                class="logout-btn">
+
+                Logout
+
+            </button>
+
+        </aside>
+
+        <!-- Main Content -->
+
+        <main class="content">
+
+            <header class="page-header">
+
+                <div class="header-info">
+
+                    <h1>Medicine Search</h1>
+
+                    <p>
+                        Find medicines quickly by searching with medicine name,
+                        category, manufacturer, or other available details.
+                    </p>
+
+                </div>
+
+            </header>
+
+            <!-- Search Section -->
+
+            <section class="toolbar">
+
+                <input
+                    type="text"
+                    id="searchInput"
+                    placeholder="Search medicines by name, category, or manufacturer..."
+                    autocomplete="off">
+
+            </section>
+
+            <!-- Search Results -->
+
+            <section class="table-card">
+
+                <table>
+
+                    <thead>
+
+                        <tr>
+
+                            <th>ID</th>
+                            <th>Medicine Name</th>
+                            <th>Category</th>
+                            <th>Manufacturer</th>
+                            <th>Price</th>
+                            <th>Expiry Date</th>
+
+                        </tr>
+
+                    </thead>
+
+                    <tbody id="searchTable">
+
+                        <tr>
+
+                            <td
+                                colspan="6"
+                                class="empty-state">
+
+                                Start typing to search medicines...
+
+                            </td>
+
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </section>
+
+        </main>
+
+    </div>
+
+    <script type="module" src="js/search.js"></script>
+
+</body>
+
+</html>

@@ -16,81 +16,125 @@
 
 <body>
 
-<div class="layout">
+    <!-- Hero Header -->
 
-    <main class="main-content">
+    <section class="dashboard-hero">
 
-        <!-- Header -->
-        <header class="topbar">
+        <div class="hero-content">
 
-            <div>
+            <h1>Dashboard</h1>
 
-                <h1>Dashboard</h1>
+            <h2>
+                Welcome Back,
+                <span id="userName">User</span>
+            </h2>
 
-                <h2>
-                    Welcome back,
-                    <span id="userName">User</span>
-                </h2>
-
-            </div>
+            <p>
+                Manage medicines, warehouse inventory, users, orders,
+                and daily pharmacy operations from one centralized platform.
+            </p>
 
             <div class="role-badge">
-                Role:
-                <span id="roleBadge">User</span>
+                Role: <span id="roleBadge">User</span>
             </div>
 
-        </header>
+        </div>
 
-        <!-- Statistics -->
+    </section>
+
+    <!-- Statistics -->
+
+    <main class="dashboard-container">
+
         <section class="stats">
 
             <div class="stat-card">
+
                 <i class="fa-solid fa-pills"></i>
+
                 <h3>Total Medicines</h3>
+
                 <h2 id="medicineCount">0</h2>
+
             </div>
 
             <div class="stat-card">
+
                 <i class="fa-solid fa-warehouse"></i>
+
                 <h3>Total Warehouses</h3>
+
                 <h2 id="warehouseCount">0</h2>
+
             </div>
 
-            <div class="stat-card" id="userStats">
+            <div
+                class="stat-card"
+                id="userStats">
+
                 <i class="fa-solid fa-users"></i>
+
                 <h3>Total Users</h3>
+
                 <h2 id="userCount">0</h2>
+
             </div>
-                <div class="stat-card" id="orderStats">
 
-                    <i class="fa-solid fa-cart-shopping"></i>
+            <div
+    class="stat-card"
+    id="customerOrderStats">
 
-                    <h3>Total Orders</h3>
+    <i class="fa-solid fa-user"></i>
 
-                    <h2 id="orderCount">0</h2>
+    <h3>Customer Orders</h3>
 
-                </div>
+    <h2 id="customerOrderCount">0</h2>
+
+</div>
+
+<div
+    class="stat-card"
+    id="bulkOrderStats">
+
+    <i class="fa-solid fa-truck"></i>
+
+    <h3>Bulk Orders</h3>
+
+    <h2 id="bulkOrderCount">0</h2>
+
+</div>
+
+<div
+    class="stat-card"
+    id="totalOrderStats">
+
+    <i class="fa-solid fa-cart-shopping"></i>
+
+    <h3>Total Orders</h3>
+
+    <h2 id="orderCount">0</h2>
+
+</div>
+
         </section>
 
-        <!-- Quick Actions -->
+        <!-- Modules -->
+
         <h2 class="section-title">
             Quick Actions
         </h2>
 
         <section class="cards">
 
-            <!-- Medicines -->
             <div
                 class="action-card"
                 id="medicineCard">
 
-                <i class="fa-solid fa-pills"></i>
-
-                <h3>Medicines</h3>
+                <h3>Medicines Management</h3>
 
                 <p>
-                    View medicines, add new medicines,
-                    delete records and manage CSV files.
+                    Maintain medicine records, monitor stock levels,
+                    and track expiry dates.
                 </p>
 
                 <button>
@@ -99,19 +143,15 @@
 
             </div>
 
-            <!-- Warehouses -->
             <div
                 class="action-card"
                 id="warehouseCard">
 
-                <i class="fa-solid fa-warehouse"></i>
-
-                <h3>Warehouses</h3>
+                <h3>Warehouse Management</h3>
 
                 <p>
-                    View warehouse stock,
-                    manage warehouse inventory,
-                    upload warehouse CSV.
+                    Track inventory across warehouses and ensure
+                    product availability.
                 </p>
 
                 <button>
@@ -120,40 +160,32 @@
 
             </div>
 
-            <!-- Users -->
-            <div
-                class="action-card"
-                id="userCard">
-
-                <i class="fa-solid fa-users"></i>
-
-                <h3>Users</h3>
-
-                <p>
-                    Manage system users,
-                    create new users,
-                    delete existing users.
-                </p>
-
-                <button>
-                    Open Module
-                </button>
-
-            </div>
-
-            <!-- Orders -->
             <div
                 class="action-card"
                 id="ordersCard">
 
-                <i class="fa-solid fa-cart-shopping"></i>
-
-                <h3>Orders</h3>
+                <h3>Order Management</h3>
 
                 <p>
-                    Manage customer orders,
-                    bulk orders, approval workflows,
-                    and order tracking.
+                    Process customer orders, supplier purchases,
+                    and delivery requests.
+                </p>
+
+                <button>
+                    Open Module
+                </button>
+
+            </div>
+
+            <div
+                class="action-card"
+                id="userCard">
+
+                <h3>User Management</h3>
+
+                <p>
+                    Manage administrators, pharmacists, staff,
+                    and customer accounts.
                 </p>
 
                 <button>
@@ -166,12 +198,10 @@
 
     </main>
 
-</div>
-
-<script
-    type="module"
-    src="js/dashboard.js">
-</script>
+    <script
+        type="module"
+        src="js/dashboard.js">
+    </script>
 
 </body>
 

@@ -4,7 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pharmacy Inventory Management System | Medicines</title>
+
+    <title>Medicine Management | Pharmacy Inventory Management System</title>
 
     <link rel="stylesheet" href="css/dashboard.css">
     <link rel="stylesheet" href="css/medicines.css">
@@ -12,72 +13,96 @@
 
 <body>
 
-<div class="layout">
+    <!-- Hero Section -->
 
-    <main class="content">
+    <section class="dashboard-hero">
 
-        <header class="page-header">
+        <div class="hero-content">
 
-            <div>
-                <h1>Medicines</h1>
-                <p>Manage medicine inventory and stock.</p>
-            </div>
+            <h1>Medicine Management</h1>
 
-            <div style="display:flex; gap:10px;">
+            <p>
+                Manage medicine records, manufacturers, pricing,
+                and inventory information from one centralized platform.
+            </p>
 
-                <button id="addMedicineBtn" class="primary-btn">
-                    + Add Medicine
-                </button>
+        </div>
 
-                <button id="uploadMedicineBtn" class="primary-btn">
-                    Upload CSV
-                </button>
+    </section>
 
-                <button id="downloadMedicineBtn" class="primary-btn">
-                    Download CSV
-                </button>
+    <main class="dashboard-container">
 
-            </div>
+        <!-- Action Buttons -->
 
-        </header>
+        <div class="header-actions">
+
+            <button
+                id="addMedicineBtn"
+                class="primary-btn">
+                Add Medicine
+            </button>
+
+            <button
+                id="uploadMedicineBtn"
+                class="primary-btn">
+                Upload CSV
+            </button>
+
+            <button
+                id="downloadMedicineBtn"
+                class="primary-btn">
+                Download CSV
+            </button>
+
+        </div>
 
         <input
             type="file"
             id="medicineCsvFile"
             accept=".csv"
-            style="display:none;"
-        >
+            style="display:none;">
 
-        <section class="toolbar">
+        <!-- Search -->
+
+        <section class="search-card">
 
             <input
                 type="text"
                 id="searchMedicine"
-                placeholder="Search medicines..."
-            >
+                placeholder="Search medicine by name or manufacturer">
 
         </section>
+
+        <!-- Table -->
 
         <section class="table-card">
 
             <table>
 
                 <thead>
+
                     <tr>
                         <th>ID</th>
-                        <th>Name</th>
+                        <th>Medicine Name</th>
                         <th>Manufacturer</th>
                         <th>Price</th>
                         <th>Actions</th>
                     </tr>
+
                 </thead>
 
                 <tbody id="medicineTable">
 
                     <tr id="loadingRow">
-                        <td colspan="5" class="empty-state">
+
+                        <td
+                            colspan="5"
+                            class="empty-state">
+
                             Loading medicines...
+
                         </td>
+
                     </tr>
 
                 </tbody>
@@ -88,94 +113,97 @@
 
     </main>
 
-</div>
+    <!-- Modal -->
 
-<div id="medicineModal" class="modal">
+    <div
+        id="medicineModal"
+        class="modal">
 
-    <div class="modal-content">
+        <div class="modal-content">
 
-        <h2 id="modalTitle">
-            Add Medicine
-        </h2>
+            <div class="modal-header">
 
-        <form id="medicineForm">
+                <h2 id="modalTitle">
+                    Add Medicine
+                </h2>
 
-            <input
-                type="hidden"
-                id="medicineId"
-            >
+            </div>
 
-            <div class="form-group">
-
-                <label for="name">
-                    Medicine Name
-                </label>
+            <form id="medicineForm">
 
                 <input
-                    type="text"
-                    id="name"
-                    placeholder="Enter medicine name"
-                    required
-                >
+                    type="hidden"
+                    id="medicineId">
 
-            </div>
+                <div class="form-group">
 
-            <div class="form-group">
+                    <label for="name">
+                        Medicine Name
+                    </label>
 
-                <label for="manufacturer">
-                    Manufacturer
-                </label>
+                    <input
+                        type="text"
+                        id="name"
+                        placeholder="Enter medicine name"
+                        required>
 
-                <input
-                    type="text"
-                    id="manufacturer"
-                    placeholder="Company name"
-                    required
-                >
+                </div>
 
-            </div>
+                <div class="form-group">
 
-            <div class="form-group">
+                    <label for="manufacturer">
+                        Manufacturer
+                    </label>
 
-                <label for="price">
-                    Price
-                </label>
+                    <input
+                        type="text"
+                        id="manufacturer"
+                        placeholder="Enter manufacturer name"
+                        required>
 
-                <input
-                    type="number"
-                    id="price"
-                    min="0"
-                    step="0.01"
-                    placeholder="0.00"
-                    required
-                >
+                </div>
 
-            </div>
+                <div class="form-group">
 
-            <div class="modal-buttons">
+                    <label for="price">
+                        Price
+                    </label>
 
-                <button
-                    type="submit"
-                    class="primary-btn">
-                    Save
-                </button>
+                    <input
+                        type="number"
+                        id="price"
+                        min="0"
+                        step="0.01"
+                        placeholder="Enter price"
+                        required>
 
-                <button
-                    type="button"
-                    id="cancelBtn"
-                    class="secondary-btn">
-                    Cancel
-                </button>
+                </div>
 
-            </div>
+                <div class="modal-buttons">
 
-        </form>
+                    <button
+                        type="submit"
+                        class="primary-btn">
+                        Save
+                    </button>
+
+                    <button
+                        type="button"
+                        id="cancelBtn"
+                        class="secondary-btn">
+                        Cancel
+                    </button>
+
+                </div>
+
+            </form>
+
+        </div>
 
     </div>
 
-</div>
-
-<script type="module" src="js/medicines.js"></script>
+    <script type="module" src="js/medicines.js"></script>
 
 </body>
+
 </html>
