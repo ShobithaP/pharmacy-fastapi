@@ -25,10 +25,18 @@ class Order(Base):
         Integer,
         ForeignKey("users.id")
     )
-
+    pharmacist_id = Column(
+        Integer,
+        ForeignKey("users.id"),
+        nullable=True
+    )
     medicine_id = Column(
         Integer,
         ForeignKey("medicines.id")
+    )
+    warehouse_id = Column(
+        Integer,
+        nullable=True
     )
 
     quantity = Column(

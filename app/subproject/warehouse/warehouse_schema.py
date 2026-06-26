@@ -19,12 +19,8 @@ class WarehouseDelete(BaseModel):
     id: int
 
 
-class WarehouseResponse(BaseModel):
+class WarehouseResponse(WarehouseBase):
     id: int
-    medicine_id: int
-    warehouse_name: str
-    location: str
-    stock_quantity: int
 
     class Config:
         from_attributes = True

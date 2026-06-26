@@ -228,31 +228,30 @@ async def upload_medicines(
     }
 
 
-
 @router.get("/warehouse/download")
 def download_warehouse_csv(
     db: Session = Depends(get_db)
 ):
 
-    warehouses = db.query(WarehouseStock).all()
+    warehouses = db.query(
+        WarehouseStock
+    ).all()
 
     output = io.StringIO()
 
     writer = csv.writer(output)
 
     writer.writerow([
+        "warehouse_id",
         "medicine_id",
-        "warehouse_name",
-        "location",
         "stock_quantity"
     ])
 
     for warehouse in warehouses:
 
         writer.writerow([
+            warehouse.warehouse_id,
             warehouse.medicine_id,
-            warehouse.warehouse_name,
-            warehouse.location,
             warehouse.stock_quantity
         ])
 
@@ -266,7 +265,6 @@ def download_warehouse_csv(
             "attachment; filename=warehouse.csv"
         }
     )
-
 
 @router.post(
     "/warehouse-stock",

@@ -2,29 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="023aba9f-de8b-4b8e-b1a7-11f1958e995c" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/frontend/css/home.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/css/orders.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/css/warehouse.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/js/warehouse.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/subproject/pharmacist_inventory_model.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/subproject/api.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/subproject/api.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/subproject/orders/order_api.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/subproject/orders/order_api.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/css/auth.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/css/auth.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/css/common.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/css/common.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/css/dashboard.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/css/dashboard.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/css/medicines.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/css/medicines.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/css/users.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/css/users.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/dashboard.html" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/dashboard.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/js/dashboard.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/js/dashboard.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/js/login.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/js/login.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/subproject/orders/order_model.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/subproject/orders/order_model.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/subproject/orders/order_schema.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/subproject/orders/order_schema.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/subproject/warehouse/warehouse_schema.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/subproject/warehouse/warehouse_schema.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/js/orders.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/js/orders.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/login.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/medicines.html" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/medicines.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/js/warehouse.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/js/warehouse.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/orders.html" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/orders.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/register.html" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/register.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/search.html" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/search.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/users.html" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/users.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/warehouses.html" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/warehouses.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/zipfrontend.zip" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,9 +24,9 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Dockerfile" />
-        <option value="Python Script" />
         <option value="JavaScript File" />
         <option value="HTML File" />
+        <option value="Python Script" />
       </list>
     </option>
   </component>
@@ -89,22 +78,11 @@
       <option name="presentableId" value="Default" />
       <updated>1781847112075</updated>
       <workItem from="1781847113068" duration="42654000" />
-      <workItem from="1782129890610" duration="54616000" />
+      <workItem from="1782129890610" duration="72849000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/main.py</url>
-          <line>233</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>

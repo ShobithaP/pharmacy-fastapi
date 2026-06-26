@@ -10,7 +10,40 @@ const searchInput =
         "warehouseSearch"
     );
 
+const modal =
+    document.getElementById(
+        "modal"
+    );
+
+const role =
+    (
+        localStorage.getItem("role") || ""
+    ).toUpperCase();
+
 let warehouses = [];
+
+/* ==========================
+   ROLE UI
+========================== */
+
+window.addEventListener(
+    "DOMContentLoaded",
+    () => {
+
+        const addButton =
+            document.querySelector(
+                ".header-actions .primary-btn"
+            );
+
+        if (
+            role !== "ADMIN" &&
+            role !== "SUPER_ADMIN"
+        ) {
+            addButton?.remove();
+        }
+
+    }
+);
 
 /* ==========================
    LOAD WAREHOUSES
@@ -35,8 +68,8 @@ async function loadWarehouses() {
 
         table.innerHTML = `
             <tr>
-                <td colspan="6">
-                    Failed to load warehouse records
+                <td colspan="5">
+                    Failed to load warehouses
                 </td>
             </tr>
         `;
@@ -56,8 +89,8 @@ function renderTable(data) {
 
         table.innerHTML = `
             <tr>
-                <td colspan="6">
-                    No warehouse records found
+                <td colspan="5">
+                    No warehouses found
                 </td>
             </tr>
         `;
@@ -72,21 +105,26 @@ function renderTable(data) {
 
                 <td>${warehouse.id}</td>
 
-                <td>${warehouse.medicine_id}</td>
-
                 <td>${warehouse.warehouse_name}</td>
 
                 <td>${warehouse.location}</td>
 
-                <td>${warehouse.stock_quantity}</td>
+                <td>${warehouse.manager_id}</td>
 
                 <td>
 
-                    <button
-                        class="deleteWarehouseBtn"
-                        data-id="${warehouse.id}">
-                        Delete
-                    </button>
+                    ${
+                        role === "ADMIN" ||
+                        role === "SUPER_ADMIN"
+                        ? `
+                        <button
+                            class="deleteWarehouseBtn"
+                            data-id="${warehouse.id}">
+                            Delete
+                        </button>
+                        `
+                        : ""
+                    }
 
                 </td>
 
@@ -96,6 +134,96 @@ function renderTable(data) {
     });
 
 }
+
+/* ==========================
+   OPEN MODAL
+========================== */
+
+window.openAddModal = function () {
+
+    modal.style.display = "flex";
+
+};
+
+/* ==========================
+   CLOSE MODAL
+========================== */
+
+window.closeModal = function () {
+
+    modal.style.display = "none";
+
+};
+
+/* ==========================
+   SAVE WAREHOUSE
+========================== */
+
+window.saveWarehouse = async function () {
+
+    try {
+
+        const warehouseName =
+            document.getElementById(
+                "warehouse_name"
+            ).value.trim();
+
+        const location =
+            document.getElementById(
+                "location"
+            ).value.trim();
+
+        const managerId =
+            Number(
+                document.getElementById(
+                    "manager_id"
+                ).value
+            );
+
+        if (
+            !warehouseName ||
+            !location ||
+            !managerId
+        ) {
+
+            alert(
+                "Please fill all fields"
+            );
+
+            return;
+        }
+
+        await Api.post(
+            "/warehouse/",
+            {
+                warehouse_name:
+                    warehouseName,
+                location:
+                    location,
+                manager_id:
+                    managerId
+            }
+        );
+
+        alert(
+            "Warehouse created successfully"
+        );
+
+        closeModal();
+
+        loadWarehouses();
+
+    } catch (error) {
+
+        console.error(error);
+
+        alert(
+            "Failed to create warehouse"
+        );
+
+    }
+
+};
 
 /* ==========================
    DELETE
@@ -120,7 +248,7 @@ table.addEventListener(
 
         if (
             !confirm(
-                "Delete warehouse record?"
+                "Delete warehouse?"
             )
         ) {
             return;
@@ -176,10 +304,9 @@ searchInput?.addEventListener(
                 warehouse =>
                     `
                     ${warehouse.id}
-                    ${warehouse.medicine_id}
                     ${warehouse.warehouse_name}
                     ${warehouse.location}
-                    ${warehouse.stock_quantity}
+                    ${warehouse.manager_id}
                     `
                         .toLowerCase()
                         .includes(

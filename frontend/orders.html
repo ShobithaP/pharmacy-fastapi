@@ -3,17 +3,19 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
 
-    <title>Order Management | Pharmacy Inventory Management System</title>
+    <title>
+        Order Management |
+        Pharmacy Inventory Management System
+    </title>
 
     <link rel="stylesheet" href="css/dashboard.css">
     <link rel="stylesheet" href="css/orders.css">
 </head>
 
 <body>
-
-    <!-- Hero Section -->
 
     <section class="dashboard-hero">
 
@@ -23,7 +25,7 @@
 
             <p>
                 Manage customer purchases, bulk orders,
-                approvals, and inventory requests from one platform.
+                approvals and inventory requests.
             </p>
 
         </div>
@@ -32,7 +34,7 @@
 
     <main class="dashboard-container">
 
-        <!-- Customer Order -->
+        <!-- CUSTOMER ORDER -->
 
         <section
             class="order-card"
@@ -50,6 +52,16 @@
 
                     <option value="">
                         Select Medicine
+                    </option>
+
+                </select>
+
+                <select
+                    id="pharmacistSelect"
+                    required>
+
+                    <option value="">
+                        Select Pharmacist
                     </option>
 
                 </select>
@@ -73,7 +85,7 @@
 
         </section>
 
-        <!-- Bulk Order -->
+        <!-- BULK ORDER -->
 
         <section
             class="order-card"
@@ -87,6 +99,14 @@
 
                     <option value="">
                         Select Medicine
+                    </option>
+
+                </select>
+
+                <select id="warehouseSelect">
+
+                    <option value="">
+                        Select Warehouse
                     </option>
 
                 </select>
@@ -110,11 +130,13 @@
 
         </section>
 
-        <!-- Customer Orders -->
+        <!-- CUSTOMER PENDING -->
 
         <section class="table-card">
 
-            <h3>Customer Orders</h3>
+            <h3>
+                Customer Orders Pending Approval
+            </h3>
 
             <table>
 
@@ -122,7 +144,7 @@
 
                     <tr>
                         <th>ID</th>
-                        <th>Medicine ID</th>
+                        <th>Medicine</th>
                         <th>Quantity</th>
                         <th>Status</th>
                         <th>Actions</th>
@@ -133,15 +155,9 @@
                 <tbody id="customerOrdersTable">
 
                     <tr>
-
-                        <td
-                            colspan="5"
-                            class="empty-state">
-
+                        <td colspan="5">
                             Loading customer orders...
-
                         </td>
-
                     </tr>
 
                 </tbody>
@@ -150,13 +166,50 @@
 
         </section>
 
-        <!-- Bulk Orders -->
+        <!-- CUSTOMER HISTORY -->
+
+        <section class="table-card">
+
+            <h3>
+                Customer Order History
+            </h3>
+
+            <table>
+
+                <thead>
+
+                    <tr>
+                        <th>ID</th>
+                        <th>Medicine ID</th>
+                        <th>Quantity</th>
+                        <th>Status</th>
+                    </tr>
+
+                </thead>
+
+                <tbody id="customerHistoryTable">
+
+                    <tr>
+                        <td colspan="4">
+                            No customer order history
+                        </td>
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </section>
+
+        <!-- BULK PENDING -->
 
         <section
             class="table-card"
             id="bulkOrdersViewSection">
 
-            <h3>Bulk Orders</h3>
+            <h3>
+                Bulk Orders Pending Approval
+            </h3>
 
             <table>
 
@@ -175,15 +228,46 @@
                 <tbody id="bulkOrdersTable">
 
                     <tr>
-
-                        <td
-                            colspan="5"
-                            class="empty-state">
-
+                        <td colspan="5">
                             Loading bulk orders...
-
                         </td>
+                    </tr>
 
+                </tbody>
+
+            </table>
+
+        </section>
+
+        <!-- BULK HISTORY -->
+
+        <section
+            class="table-card"
+            id="bulkHistorySection">
+
+            <h3>
+                Bulk Order History
+            </h3>
+
+            <table>
+
+                <thead>
+
+                    <tr>
+                        <th>ID</th>
+                        <th>Medicine ID</th>
+                        <th>Quantity</th>
+                        <th>Status</th>
+                    </tr>
+
+                </thead>
+
+                <tbody id="bulkHistoryTable">
+
+                    <tr>
+                        <td colspan="4">
+                            No bulk order history
+                        </td>
                     </tr>
 
                 </tbody>
@@ -202,3 +286,4 @@
 </body>
 
 </html>
+``

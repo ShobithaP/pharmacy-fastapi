@@ -95,9 +95,7 @@ def search_data(
                         "name": medicine.name,
                         "manufacturer": medicine.manufacturer,
                         "price": medicine.price,
-                        "warehouse_id": stock.id,
-                        "warehouse_name": stock.warehouse_name,
-                        "location": stock.location,
+                        "warehouse_id": stock.warehouse_id,
                         "stock_quantity": stock.stock_quantity
                     }
                 )
@@ -251,7 +249,6 @@ def upload_medicines(
     db.commit()
 
     return {"message": f"{len(df)} medicines inserted"}
-
 @app.post("/warehouse/upload")
 def upload_warehouse(
     file: UploadFile = File(...),
@@ -260,15 +257,18 @@ def upload_warehouse(
     df = pd.read_csv(file.file)
 
     for _, row in df.iterrows():
+
         db.add(
             WarehouseStock(
+                warehouse_id=row["warehouse_id"],
                 medicine_id=row["medicine_id"],
-                warehouse_name=row["warehouse_name"],
-                location=row["location"],
                 stock_quantity=row["stock_quantity"]
             )
         )
 
     db.commit()
 
-    return {"message": f"{len(df)} warehouse records inserted"}
+    return {
+        "message":
+        f"{len(df)} warehouse records inserted"
+    }
