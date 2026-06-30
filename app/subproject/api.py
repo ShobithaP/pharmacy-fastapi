@@ -341,6 +341,29 @@ def delete_warehouse(
     return {
         "message": "Warehouse stock deleted"
     }
+@router.get("/warehouse/medicine/{medicine_id}")
+def get_warehouses_for_medicine(
+    medicine_id: int,
+    db: Session = Depends(get_db)
+):
+
+    warehouses = (
+        db.query(WarehouseStock)
+        .filter(
+            WarehouseStock.medicine_id == medicine_id
+        )
+        .all()
+    )
+
+    return [
+        {
+            "id": warehouse.id,
+            "warehouse_name": warehouse.warehouse_name,
+            "location": warehouse.location,
+            "stock_quantity": warehouse.stock_quantity
+        }
+        for warehouse in warehouses
+    ]
 @router.get(
     "/warehouse-stock",
     response_model=list[WarehouseStockResponse]

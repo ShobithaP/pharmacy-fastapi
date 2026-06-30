@@ -186,3 +186,26 @@ body {
         padding: 40px 20px;
     }
 }
+#logoutBtn {
+    margin-top: 20px;
+    background: #ffffff;
+    color: #0077b6;
+    border: none;
+    padding: 12px 28px;
+    border-radius: 10px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(220, 38, 38, 0.3);
+}
+
+#logoutBtn:hover {
+    background: #ffffff;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 18px rgba(220, 38, 38, 0.4);
+}
+
+#logoutBtn:active {
+    transform: translateY(0);
+}

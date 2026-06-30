@@ -229,7 +229,7 @@ async function loadPharmacists() {
 
                     pharmacistSelect.innerHTML += `
                         <option value="${pharmacist.id}">
-                            ${pharmacist.name}
+                            ${pharmacist.username}
                         </option>
                     `;
 
@@ -656,7 +656,7 @@ loadWarehousesForMedicine() {
     );
 
 }
-``
+
 /* ==========================
    CUSTOMER ORDER
 ========================== */
